@@ -105,6 +105,30 @@
       <Value>WI</Value>
       <Value>WY</Value>
     </StateAbbreviations>
+    <Provinces>
+      <Value>Ontario</Value>
+      <Value>Quebec</Value>
+      <Value>Nova Scotia</Value>
+      <Value>New Brunswick</Value>
+      <Value>Manitoba</Value>
+      <Value>British Columbia</Value>
+      <Value>Prince Edward Island</Value>
+      <Value>Saskatchewan</Value>
+      <Value>Alberta</Value>
+      <Value>Newfoundland and Labrador</Value>
+    </Provinces>
+    <ProvinceAbbreviations>
+      <Value>ON</Value>
+      <Value>QC</Value>
+      <Value>NS</Value>
+      <Value>NB</Value>
+      <Value>MB</Value>
+      <Value>BC</Value>
+      <Value>PE</Value>
+      <Value>SK</Value>
+      <Value>AB</Value>
+      <Value>NL</Value>
+    </ProvinceAbbreviations>
     <Country>
 
     </Country>
