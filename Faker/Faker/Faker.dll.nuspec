@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Faker</id>
+    <version>1.0.0</version>
+    <authors>Jacob Ferm</authors>
+    <owners>Jacob Ferm</owners>
+    <licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/FermJacob/Faker</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Fake data utility</description>
+    <copyright>Copyright Jacob Ferm 2016</copyright>
+	<language>en-us</language>
+    <tags>Faker UnitTest</tags>
+  </metadata>
+</package>
