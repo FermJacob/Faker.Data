@@ -13,4 +13,7 @@
 	<language>en-us</language>
     <tags>Faker UnitTest</tags>
   </metadata>
+  <files>
+		<file src="\bin\Release\Faker.dll" target="lib\net45" />
+	</files>
 </package>
