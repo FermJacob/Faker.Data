@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>Faker</id>
+    <id>Faker.Data</id>
     <version>1.0.0</version>
     <authors>Jacob Ferm</authors>
     <owners>Jacob Ferm</owners>
