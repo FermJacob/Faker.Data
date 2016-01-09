@@ -101,7 +101,7 @@ namespace Faker.Tests
         public void USZip()
         {
             Assert.IsNotNull(Address.USZipCode());
-            Assert.IsTrue(Address.USZipCode().Length == 5);
+            Assert.IsTrue(Address.USZipCode().Length > 2);
         }
 
         [TestMethod]

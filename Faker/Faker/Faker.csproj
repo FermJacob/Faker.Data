@@ -46,9 +46,7 @@
     <Compile Include="XML.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Data.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Faker.dll.nuspec" />
