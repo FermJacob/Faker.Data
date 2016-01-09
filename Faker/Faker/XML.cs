@@ -1,25 +1,35 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using System.Reflection;
+﻿//-----------------------------------------------------------------------
+// <copyright file="XML.cs">
+//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace Faker
 {
+    /// <summary>
+    /// XML class to handle loading data.xml
+    /// </summary>
     public static class XML
     {
+        /// <summary>
+        /// XDocument variable
+        /// </summary>
+        private static XDocument doc;
 
-        public static XDocument doc;
-
-
-
-        public static XDocument Doc
+        /// <summary>
+        /// Gets the XDocument to use
+        /// </summary>
+        private static XDocument Doc
         {
             get
             {
                 if (doc == null)
                 {
-
                     doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Faker.Data.xml")));
                     return doc;
                 }
@@ -30,12 +40,14 @@ namespace Faker
             }
         }
 
+        /// <summary>
+        /// Gets the list of the data
+        /// </summary>
+        /// <param name="node">Which node to select</param>
+        /// <returns>A list of strings</returns>
         public static List<string> GetListString(XName node)
         {
             return Doc.Descendants(node).Elements("Value").Select(item => (string)item).ToList();
-
         }
-
-
     }
 }

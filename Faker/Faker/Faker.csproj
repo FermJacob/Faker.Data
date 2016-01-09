@@ -46,7 +46,12 @@
     <Compile Include="XML.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data.xml" />
+    <EmbeddedResource Include="Data.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Faker.dll.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

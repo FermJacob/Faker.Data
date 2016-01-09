@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs">
+//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

@@ -1,19 +1,25 @@
 <?xml version="1.0"?>
 <package>
-  <metadata>
-    <id>Faker.Data</id>
-    <version>1.0.0</version>
-    <authors>Jacob Ferm</authors>
-    <owners>Jacob Ferm</owners>
-    <licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/FermJacob/Faker</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Fake data utility</description>
-    <copyright>Copyright Jacob Ferm 2016</copyright>
-	<language>en-us</language>
-    <tags>Faker UnitTest</tags>
-  </metadata>
-  <files>
+	<metadata>
+		<id>Faker.Data</id>
+		<version>1.0.1</version>
+		<authors>Jacob Ferm</authors>
+		<owners>Jacob Ferm</owners>
+		<licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
+    <iconUrl>http://fermium.io/favicon.ico</iconUrl>
+		<projectUrl>https://github.com/FermJacob/Faker</projectUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<description>Faker.Data is a data generation utility that offers a wide variety of options to gather information.</description>
+    <releaseNotes>
+      <![CDATA[
+      v1.0.1 Added CA Zip Codes, US Cities, US Countys, and US Zips
+      ]]>
+    </releaseNotes>
+		<copyright>Copyright Jacob Ferm 2016</copyright>
+		<language>en-us</language>
+		<tags>Faker UnitTest</tags>
+	</metadata>
+	<files>
 		<file src="\bin\Release\Faker.dll" target="lib\net45" />
 	</files>
 </package>
