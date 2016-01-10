@@ -13,10 +13,27 @@ Install the NuGet package via the Package Manager or
 PM> Install-Package Faker.Data
 ```
 ## Usage
+
+#### Addresses
 ```
 var state = Faker.Address.State();
+var stateAbbr = Faker.Address.StateAbbreviation();
+var provinceAbbr = Faker.Address.ProvinceAbbreviation();
+var province = Faker.Address.Province();
+var streetName = Faker.Address.StreetName();
+var country = Faker.Address.Country();
+var cityPrefix = Faker.Address.CityPrefix();
+var citySuffix = Faker.Address.CitySuffix();
+var secondaryAddress = Faker.Address.SecondaryAddress();
+var usCity = Faker.Address.USCity();
+var usCounty = Faker.Address.USCounty();
+var canadianZip = Faker.Address.CanadianZip();
 var usZip = Faker.Address.USZip();
 ```
-
+#### Geo Location
+```
+var lat = Faker.GeoLocation.Latitude();
+var lon = Faker.GeoLocation.Longitude();
+```
 
 
