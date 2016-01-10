@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AddressTEsts.cs">
+// <copyright file="AddressTests.cs">
 //     Copyright (c) 2016 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
