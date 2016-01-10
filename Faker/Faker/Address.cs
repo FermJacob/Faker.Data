@@ -14,7 +14,6 @@ namespace Faker
     /// </summary>
     public static class Address
     {
-        private static Random random = new Random();
         private static List<string> stateAbbreviations;
         private static List<string> streetName;
         private static List<string> states;
@@ -36,7 +35,7 @@ namespace Faker
                 states = XML.GetListString("States");
             }
 
-            return states[random.Next(0, states.Count - 1)];
+            return states[Number.RandomNumber(0, states.Count - 1)];
         }
 
         public static string StateAbbreviation()
@@ -46,7 +45,7 @@ namespace Faker
                 stateAbbreviations = XML.GetListString("StateAbbreviations");
             }
 
-            return stateAbbreviations[random.Next(0, stateAbbreviations.Count - 1)];
+            return stateAbbreviations[Number.RandomNumber(0, stateAbbreviations.Count - 1)];
         }
 
         public static string Province()
@@ -56,7 +55,7 @@ namespace Faker
                 provinces = XML.GetListString("Provinces");
             }
 
-            return provinces[random.Next(0, provinces.Count - 1)];
+            return provinces[Number.RandomNumber(0, provinces.Count - 1)];
         }
 
         public static string ProvinceAbbreviation()
@@ -66,7 +65,7 @@ namespace Faker
                 provinceAbbreviations = XML.GetListString("ProvinceAbbreviations");
             }
 
-            return provinceAbbreviations[random.Next(0, provinceAbbreviations.Count - 1)];
+            return provinceAbbreviations[Number.RandomNumber(0, provinceAbbreviations.Count - 1)];
         }
 
         public static string StreetName()
@@ -76,12 +75,11 @@ namespace Faker
                 streetName = XML.GetListString("StreetName");
             }
 
-            return streetName[random.Next(0, streetName.Count - 1)];
+            return streetName[Number.RandomNumber(0, streetName.Count - 1)];
         }
 
         public static string CanadianZipCode()
         {
-            Random rand = new Random();
             List<string> alpha = new List<string>
             {
                 "A", "B", "C", "E", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Y", "Z"
@@ -97,15 +95,15 @@ namespace Faker
             {
                 if (i == 0)
                 {
-                    newZip.Append(alphaFirst[rand.Next(0, alphaFirst.Count - 1)]);
+                    newZip.Append(alphaFirst[Number.RandomNumber(0, alphaFirst.Count - 1)]);
                 }
                 else if ((i % 2) == 0)
                 {
-                    newZip.Append(alpha[rand.Next(0, alpha.Count - 1)]);
+                    newZip.Append(alpha[Number.RandomNumber(0, alpha.Count - 1)]);
                 }
                 else
                 {
-                    newZip.Append(numeric[rand.Next(0, numeric.Count - 1)]);
+                    newZip.Append(numeric[Number.RandomNumber(0, numeric.Count - 1)]);
                 }
             }
 
@@ -119,7 +117,7 @@ namespace Faker
                 country = XML.GetListString("Country");
             }
 
-            return country[random.Next(0, country.Count - 1)];
+            return country[Number.RandomNumber(0, country.Count - 1)];
         }
 
         public static string CityPrefix()
@@ -129,7 +127,7 @@ namespace Faker
                 cityPrefix = XML.GetListString("CityPrefix");
             }
         
-            return cityPrefix[random.Next(0, cityPrefix.Count - 1)];
+            return cityPrefix[Number.RandomNumber(0, cityPrefix.Count - 1)];
         }
 
         public static string CitySuffix()
@@ -139,7 +137,7 @@ namespace Faker
                 citySuffix = XML.GetListString("CitySuffix");
             }
 
-            return citySuffix[random.Next(0, citySuffix.Count - 1)];
+            return citySuffix[Number.RandomNumber(0, citySuffix.Count - 1)];
         }
 
         public static string SecondaryAddress()
@@ -149,7 +147,7 @@ namespace Faker
                 secondaryAddress = XML.GetListString("SecondaryAddress");
             }
 
-            return secondaryAddress[random.Next(0, secondaryAddress.Count - 1)] + random.Next(1000);
+            return secondaryAddress[Number.RandomNumber(0, secondaryAddress.Count - 1)] + Number.RandomNumber(0, 1000);
         }
 
         public static string StreetSuffix()
@@ -159,7 +157,7 @@ namespace Faker
                 streetSuffix = XML.GetListString("StreetSuffix");
             }
 
-            return streetSuffix[random.Next(0, streetSuffix.Count - 1)];
+            return streetSuffix[Number.RandomNumber(0, streetSuffix.Count - 1)];
         }
 
         public static string USZipCode()
@@ -169,7 +167,7 @@ namespace Faker
                 usZipCode = XML.GetListString("USZipCode");
             }
 
-            return usZipCode[random.Next(0, usZipCode.Count - 1)];
+            return usZipCode[Number.RandomNumber(0, usZipCode.Count - 1)];
         }
 
         public static string USCity()
@@ -179,7 +177,7 @@ namespace Faker
                 usCity = XML.GetListString("USCity");
             }
 
-            return usCity[random.Next(0, usCity.Count - 1)];
+            return usCity[Number.RandomNumber(0, usCity.Count - 1)];
         }
 
         public static string USCounty()
@@ -189,7 +187,7 @@ namespace Faker
                 usCounty = XML.GetListString("USCounty");
             }
 
-            return usCounty[random.Next(0, usCounty.Count - 1)];
+            return usCounty[Number.RandomNumber(0, usCounty.Count - 1)];
         }
     }
 }
