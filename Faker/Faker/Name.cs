@@ -13,6 +13,8 @@ namespace Faker
     /// </summary>
     public static class Name
     {
+        // Ethnicity
+        // Gender
         private static Random random = new Random();
         private static List<string> maleFirstName;
         private static List<string> femaleFirstName;
