@@ -11,5 +11,7 @@ namespace Faker
         // Account Name
         // Amount
         // Transaction Type
+        // Interest Rate
+        // Type (CD, Mutual, 401k, etc)
     }
 }

@@ -11,6 +11,7 @@ namespace Faker
         // Make
         // Model
         // Color
+        // Year
         // Drive train
         // Manufacturer
         // Trim

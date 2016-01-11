@@ -11,5 +11,7 @@ namespace Faker
         // Title
         // Title Suffix
         // Rating
+        // Year
+        // Gross
     }
 }
