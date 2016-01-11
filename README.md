@@ -6,7 +6,7 @@ It is available via [NuGet Package](https://www.nuget.org/packages/Faker.Data/)
 
 |CI Build | NuGet Package Deployment| NuGet |
 | :------: | :----: | :---: | :----: | :-----: |
-| ![CI Build Status](https://ferm.visualstudio.com/DefaultCollection/_apis/public/build/definitions/c55f9b7a-25b6-4f2e-8b7e-b1c8345d9344/10/badge) | ![Package Build Status](https://ferm.visualstudio.com/DefaultCollection/_apis/public/build/definitions/c55f9b7a-25b6-4f2e-8b7e-b1c8345d9344/11/badge) | ![NuGet Status](https://img.shields.io/nuget/v/Faker.Data.svg)
+| ![CI Build Status](https://ferm.visualstudio.com/DefaultCollection/_apis/public/build/definitions/c55f9b7a-25b6-4f2e-8b7e-b1c8345d9344/10/badge) | ![Package Build Status](https://ferm.visualstudio.com/DefaultCollection/_apis/public/build/definitions/c55f9b7a-25b6-4f2e-8b7e-b1c8345d9344/11/badge) | [![NuGet Status](https://img.shields.io/nuget/v/Faker.Data.svg)](https://www.nuget.org/packages/Faker.Data/)
 
 Install the NuGet package via the Package Manager or
 ```
