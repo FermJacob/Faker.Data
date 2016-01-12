@@ -31,5 +31,35 @@ namespace Faker.Tests
         {
             Assert.IsNotNull(Name.FullName());
         }
+
+        [TestMethod]
+        public void ColorRgb()
+        {
+            int i = 0;
+            int[] rgb = Color.RGB();
+            foreach (int code in rgb)
+            {
+                i++;
+                Assert.IsTrue(ColorCheck(code));
+            }
+            Assert.AreEqual(3, i);
+        }
+
+        [TestMethod]
+        public void ColorHex()
+        {
+            string hex = Color.Hex();
+            Assert.IsTrue(Regex.IsMatch(hex, @"[A - F0 - 9]+"));
+            Assert.AreEqual(hex.Length, 6);
+        }
+
+        public static bool ColorCheck(int code)
+        {
+            if (code >= 0 && code <= 255)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
