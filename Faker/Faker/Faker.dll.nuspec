@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Faker.Data</id>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 		<authors>Jacob Ferm</authors>
 		<owners>Jacob Ferm</owners>
 		<licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
@@ -12,6 +12,7 @@
 		<description>Faker.Data is a data generation utility that offers a wide variety of options to gather information.</description>
     <releaseNotes>
       <![CDATA[
+      v1.0.3 Adding Colors and number generator improvements
       v1.0.2 Added Random number generator and GeoLocation
       v1.0.1 Added CA Zip Codes, US Cities, US Countys, and US Zips
       ]]>
