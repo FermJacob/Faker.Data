@@ -35,5 +35,20 @@ var usZip = Faker.Address.USZip();
 var lat = Faker.GeoLocation.Latitude();
 var lon = Faker.GeoLocation.Longitude();
 ```
-
+### Colors
+```
+var rgb = Faker.Color.RGB();
+var hex = Faker.Color.Hex();
+```
+### Numbers
+```
+var randomNumber = Faker.Number.RandomNumber();
+var randomNumber1 = Faker.Number.RandomNumber(10);
+var randomNumber2 = Faker.Number.RandomNumber(10,20);
+var negativeNumber = Faker.Number.NegativeNumber(10);
+var evenNumber = Faker.Number.Even(0,50);
+var oddNumber = Faker.Number.Odd(0,50);
+var doubleNumber = Faker.Number.Double();
+var boolResult = Faker.Number.Bool();
+```
 
