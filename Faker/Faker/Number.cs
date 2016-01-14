@@ -22,16 +22,41 @@ namespace Faker
         /// <returns>Integer of the random number</returns>
         public static int RandomNumber(int min, int max)
         {
+            if (max < min)
+            {
+                throw new ArgumentException("Max number must be greater than min");
+            }
+
             return random.Next(min, max);
         }
 
         /// <summary>
-        /// Gets the next random number
+        /// Gets a random number from 0 to max variable
         /// </summary>
-        /// <returns>Integer of the random number</returns>
-        public static int Next()
+        /// <param name="max">Max integer to use</param>
+        /// <returns>Integer number</returns>
+        public static int RandomNumber(int max)
+        {
+            return random.Next(Math.Abs(max));
+        }
+
+        /// <summary>
+        /// Gets a random number from 0 to any
+        /// </summary>
+        /// <returns>Integer number</returns>
+        public static int RandomNumber()
         {
             return random.Next();
+        }
+
+        /// <summary>
+        /// Gets a random negative number.  Pass in a positive value
+        /// </summary>
+        /// <param name="max">Max number positive</param>
+        /// <returns>A negative integer</returns>
+        public static int NegativeNumber(int max)
+        {
+            return random.Next(Math.Abs(max)) * -1;
         }
 
         /// <summary>

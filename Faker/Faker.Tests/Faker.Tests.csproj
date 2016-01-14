@@ -55,6 +55,7 @@
     <Compile Include="AddressTests.cs" />
     <Compile Include="CreditCardTests.cs" />
     <Compile Include="GeoLocationTests.cs" />
+    <Compile Include="NumberTests.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

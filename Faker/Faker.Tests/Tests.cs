@@ -49,7 +49,7 @@ namespace Faker.Tests
         public void ColorHex()
         {
             string hex = Color.Hex();
-            Assert.IsTrue(Regex.IsMatch(hex, @"[A - F0 - 9]+"));
+            Assert.IsTrue(Regex.IsMatch(hex, @"[A-F0-9]+"), "Hex color is: {0}",hex);
             Assert.AreEqual(hex.Length, 6);
         }
 
