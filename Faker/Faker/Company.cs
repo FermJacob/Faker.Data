@@ -69,7 +69,12 @@ namespace Faker
 
         public static string Symbol()
         {
-            return string.Empty;
+            string val = string.Empty;
+            for(int i =  0; i < Number.RandomNumber(3,5); i++)
+            {
+                val += Utilities.Character();
+            }
+            return val.ToUpper();
         }
 
     }

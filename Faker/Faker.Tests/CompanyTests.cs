@@ -18,11 +18,11 @@ namespace Faker.Tests
             //Assert.IsNotNull(Company.Name());
         }
 
-        [TestMethod]
-        public void CompanyIndustry()
-        {
-            Assert.IsNotNull(Company.Industry());
-        }
+        //[TestMethod]
+        //public void CompanyIndustry()
+        //{
+        //    Assert.IsNotNull(Company.Industry());
+        //}
 
         [TestMethod]
         public void CompanySector()
@@ -33,14 +33,14 @@ namespace Faker.Tests
         [TestMethod]
         public void CompanySymbol()
         {
-            //Assert.IsNotNull(Company.Symbol());
+            Assert.IsNotNull(Company.Symbol());
         }
 
-        [TestMethod]
-        public void CompanySlogan()
-        {
-            //Assert.IsNotNull(Company.Slogan());
-        }
+        //[TestMethod]
+        //public void CompanySlogan()
+        //{
+        //    //Assert.IsNotNull(Company.Slogan());
+        //}
 
         [TestMethod]
         public void CompanySuffix()
