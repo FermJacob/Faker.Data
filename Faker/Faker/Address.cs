@@ -28,21 +28,29 @@ namespace Faker
         private static List<string> usCity;
         private static List<string> usCounty;
 
+        /// <summary>
+        /// Gets a random state
+        /// </summary>
+        /// <returns>String of a state</returns>
         public static string State()
         {
             if (states == null)
             {
-                states = XML.GetListString("States");
+                states = XML.GetListString("Address", "States");
             }
 
             return states[Number.RandomNumber(0, states.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random state abbreviation
+        /// </summary>
+        /// <returns>String of state abbreviation</returns>
         public static string StateAbbreviation()
         {
             if (stateAbbreviations == null)
             {
-                stateAbbreviations = XML.GetListString("StateAbbreviations");
+                stateAbbreviations = XML.GetListString("Address", "StateAbbreviations");
             }
 
             return stateAbbreviations[Number.RandomNumber(0, stateAbbreviations.Count - 1)];
