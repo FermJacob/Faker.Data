@@ -12,17 +12,17 @@ namespace Faker.Tests
     [TestClass]
     public class CompanyTests
     {
-        [TestMethod]
-        public void CompanyName()
-        {
-            //Assert.IsNotNull(Company.Name());
-        }
-
         //[TestMethod]
-        //public void CompanyIndustry()
+        //public void CompanyName()
         //{
-        //    Assert.IsNotNull(Company.Industry());
+        //    //Assert.IsNotNull(Company.Name());
         //}
+
+        [TestMethod]
+        public void CompanyIndustry()
+        {
+            Assert.IsNotNull(Company.Industry());
+        }
 
         [TestMethod]
         public void CompanySector()
