@@ -56,6 +56,10 @@ namespace Faker
             return stateAbbreviations[Number.RandomNumber(0, stateAbbreviations.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random province
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string Province()
         {
             if (provinces == null)
@@ -66,6 +70,10 @@ namespace Faker
             return provinces[Number.RandomNumber(0, provinces.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random province abbreviation
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string ProvinceAbbreviation()
         {
             if (provinceAbbreviations == null)
@@ -76,6 +84,10 @@ namespace Faker
             return provinceAbbreviations[Number.RandomNumber(0, provinceAbbreviations.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random street name
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string StreetName()
         {
             if (streetName == null)
@@ -86,6 +98,10 @@ namespace Faker
             return streetName[Number.RandomNumber(0, streetName.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random Canadian zip
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string CanadianZipCode()
         {
             List<string> alpha = new List<string>
@@ -118,6 +134,10 @@ namespace Faker
             return newZip.ToString();
         }
 
+        /// <summary>
+        /// Gets a random country
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string Country()
         {
             if (country == null)
@@ -128,6 +148,10 @@ namespace Faker
             return country[Number.RandomNumber(0, country.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random city prefix
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string CityPrefix()
         {
             if (cityPrefix == null)
@@ -138,6 +162,10 @@ namespace Faker
             return cityPrefix[Number.RandomNumber(0, cityPrefix.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random city suffix
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string CitySuffix()
         {
             if (citySuffix == null)
@@ -148,6 +176,10 @@ namespace Faker
             return citySuffix[Number.RandomNumber(0, citySuffix.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random secondary address
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string SecondaryAddress()
         {
             if (secondaryAddress == null)
@@ -158,6 +190,10 @@ namespace Faker
             return secondaryAddress[Number.RandomNumber(0, secondaryAddress.Count - 1)] + Number.RandomNumber(0, 1000);
         }
 
+        /// <summary>
+        /// Gets a random street suffix
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string StreetSuffix()
         {
             if (streetSuffix == null)
@@ -168,6 +204,10 @@ namespace Faker
             return streetSuffix[Number.RandomNumber(0, streetSuffix.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random united states zip code
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string USZipCode()
         {
             if (usZipCode == null)
@@ -178,6 +218,10 @@ namespace Faker
             return usZipCode[Number.RandomNumber(0, usZipCode.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random United States city
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string USCity()
         {
             if (usCity == null)
@@ -188,6 +232,10 @@ namespace Faker
             return usCity[Number.RandomNumber(0, usCity.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random United States county
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string USCounty()
         {
             if (usCounty == null)

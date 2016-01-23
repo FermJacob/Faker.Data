@@ -13,14 +13,16 @@ namespace Faker
     /// </summary>
     public static class Name
     {
-        // Ethnicity
-        // Gender
-        private static Random random = new Random();
         private static List<string> maleFirstName;
         private static List<string> femaleFirstName;
         private static List<string> firstName;
         private static List<string> lastName;
+        private static List<string> ethnicity;
 
+        /// <summary>
+        /// Gets a random male first name
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string MaleFirstName()
         {
             if (maleFirstName == null)
@@ -28,9 +30,13 @@ namespace Faker
                 maleFirstName = XML.GetListString("MaleFirstName");
             }
 
-            return maleFirstName[random.Next(0, maleFirstName.Count - 1)];
+            return maleFirstName[Number.RandomNumber(0, maleFirstName.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random female first name
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string FemaleFirstName()
         {
             if (femaleFirstName == null)
@@ -38,9 +44,13 @@ namespace Faker
                 femaleFirstName = XML.GetListString("FemaleFirstName");
             }
 
-            return femaleFirstName[random.Next(0, femaleFirstName.Count - 1)];
+            return femaleFirstName[Number.RandomNumber(0, femaleFirstName.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random last name
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string LastName()
         {
             if (lastName == null)
@@ -48,14 +58,22 @@ namespace Faker
                 lastName = XML.GetListString("LastName");
             }
 
-            return lastName[random.Next(0, lastName.Count - 1)];
+            return lastName[Number.RandomNumber(0, lastName.Count - 1)];
         }
 
+        /// <summary>
+        /// Gets a random full name
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string FullName()
         {
             return FirstName() + LastName();
         }
 
+        /// <summary>
+        /// Gets a random first name
+        /// </summary>
+        /// <returns>A string value</returns>
         public static string FirstName()
         {
             if (firstName == null)
@@ -65,7 +83,35 @@ namespace Faker
                 firstName.AddRange(XML.GetListString("MaleFirstName"));
             }
 
-            return firstName[random.Next(0, firstName.Count - 1)];
+            return firstName[Number.RandomNumber(0, firstName.Count - 1)];
+        }
+
+        /// <summary>
+        /// Gets a random gender
+        /// </summary>
+        /// <returns>A string value</returns>
+        public static string Gender()
+        {
+            if (Number.Bool())
+            {
+                return "Male";
+            }
+
+            return "Female";
+        }
+
+        /// <summary>
+        /// Gets a random ethnicity
+        /// </summary>
+        /// <returns>A string value</returns>
+        public static string Ethnicity()
+        {
+            if (ethnicity == null)
+            {
+                ethnicity = XML.GetListString("Person", "Ethnicity");
+            }
+
+            return ethnicity[Number.RandomNumber(0, ethnicity.Count - 1)];
         }
     }
 }

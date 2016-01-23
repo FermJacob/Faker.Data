@@ -17,7 +17,7 @@ namespace Faker.Tests
         public void ColorRgb()
         {
             int i = 0;
-            int[] rgb = Color.RGB();
+            int[] rgb = Colors.RGB();
             foreach (int code in rgb)
             {
                 i++;
@@ -30,9 +30,21 @@ namespace Faker.Tests
         [TestMethod]
         public void ColorHex()
         {
-            string hex = Color.Hex();
+            string hex = Colors.Hex();
             Assert.IsTrue(Regex.IsMatch(hex, @"[A-F0-9]+"), "Hex color is: {0}", hex);
             Assert.AreEqual(hex.Length, 6);
+        }
+
+        [TestMethod]
+        public void SystemColor()
+        {
+            Assert.IsNotNull(Colors.SystemColor());
+        }
+
+        [TestMethod]
+        public void ColorString()
+        {
+            Assert.IsNotNull(Colors.ColorString());
         }
     }
 }

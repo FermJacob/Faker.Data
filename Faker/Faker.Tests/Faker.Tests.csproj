@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,6 +58,8 @@
     <Compile Include="CompanyTests.cs" />
     <Compile Include="CreditCardTests.cs" />
     <Compile Include="GeoLocationTests.cs" />
+    <Compile Include="ImageTests.cs" />
+    <Compile Include="NameTests.cs" />
     <Compile Include="NumberTests.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

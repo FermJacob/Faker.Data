@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Book.cs" />
-    <Compile Include="Color.cs" />
+    <Compile Include="Colors.cs" />
     <Compile Include="Commerce.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="CreditCard.cs" />
@@ -50,7 +51,7 @@
     <Compile Include="Education.cs" />
     <Compile Include="Finance.cs" />
     <Compile Include="GeoLocation.cs" />
-    <Compile Include="Image.cs" />
+    <Compile Include="Images.cs" />
     <Compile Include="Internet.cs" />
     <Compile Include="Lorem.cs" />
     <Compile Include="Movie.cs" />
@@ -65,7 +66,9 @@
     <Compile Include="XML.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data.xml" />
+    <EmbeddedResource Include="Data.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Faker.dll.nuspec" />

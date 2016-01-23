@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Utilities.cs">
+//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Faker
 {
+    /// <summary>
+    /// Static utilities class
+    /// </summary>
     public static class Utilities
     {
-
+        /// <summary>
+        /// Gets a random alpha character
+        /// </summary>
+        /// <returns>Character to use</returns>
         public static char Character()
         {
             int num = Number.RandomNumber(0, 26); // Zero to 25

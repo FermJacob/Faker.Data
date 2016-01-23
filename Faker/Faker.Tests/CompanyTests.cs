@@ -12,11 +12,11 @@ namespace Faker.Tests
     [TestClass]
     public class CompanyTests
     {
-        //[TestMethod]
-        //public void CompanyName()
-        //{
-        //    //Assert.IsNotNull(Company.Name());
-        //}
+        ////[TestMethod]
+        ////public void CompanyName()
+        ////{
+        ////    //Assert.IsNotNull(Company.Name());
+        ////}
 
         [TestMethod]
         public void CompanyIndustry()
@@ -36,11 +36,11 @@ namespace Faker.Tests
             Assert.IsNotNull(Company.Symbol());
         }
 
-        //[TestMethod]
-        //public void CompanySlogan()
-        //{
-        //    //Assert.IsNotNull(Company.Slogan());
-        //}
+        ////[TestMethod]
+        ////public void CompanySlogan()
+        ////{
+        ////    //Assert.IsNotNull(Company.Slogan());
+        ////}
 
         [TestMethod]
         public void CompanySuffix()
