@@ -40,7 +40,8 @@ namespace Faker.Tests
         [TestMethod]
         public void NegativeNumber()
         {
-            Assert.IsTrue(Number.NegativeNumber(15) < 0);
+            int number = Number.NegativeNumber(15);
+            Assert.IsTrue(number < 0, "Number was: {0}", number);
         }
 
         [TestMethod]

@@ -56,7 +56,7 @@ namespace Faker
         /// <returns>A negative integer</returns>
         public static int NegativeNumber(int max)
         {
-            return random.Next(Math.Abs(max)) * -1;
+            return random.Next(1, Math.Abs(max)) * -1;
         }
 
         /// <summary>
