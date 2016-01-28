@@ -17,6 +17,11 @@ namespace Faker
     public static class XML
     {
         /// <summary>
+        /// XDocument lock
+        /// </summary>
+        private static object docLock = new object();
+
+        /// <summary>
         /// XDocument variable
         /// </summary>
         private static XDocument doc;
@@ -28,14 +33,17 @@ namespace Faker
         {
             get
             {
-                if (doc == null)
+                lock (docLock)
                 {
-                    doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Faker.Data.xml")));
-                    return doc;
-                }
-                else
-                {
-                    return doc;
+                    if (doc == null)
+                    {
+                        doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Faker.Data.xml")));
+                        return doc;
+                    }
+                    else
+                    {
+                        return doc;
+                    }
                 }
             }
         }

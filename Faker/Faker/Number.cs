@@ -4,6 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
+using System.Threading;
 
 namespace Faker
 {
@@ -12,7 +13,8 @@ namespace Faker
     /// </summary>
     public static class Number
     {
-        private static Random random = new Random();
+        private static int seed = Environment.TickCount;
+        private static ThreadLocal<Random> random = new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref seed)));
 
         /// <summary>
         /// Gets a random number
@@ -27,7 +29,7 @@ namespace Faker
                 throw new ArgumentException("Max number must be greater than min");
             }
 
-            return random.Next(min, max);
+            return random.Value.Next(min, max);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Faker
         /// <returns>Integer number</returns>
         public static int RandomNumber(int max)
         {
-            return random.Next(Math.Abs(max));
+            return random.Value.Next(Math.Abs(max));
         }
 
         /// <summary>
@@ -46,7 +48,7 @@ namespace Faker
         /// <returns>Integer number</returns>
         public static int RandomNumber()
         {
-            return random.Next();
+            return random.Value.Next();
         }
 
         /// <summary>
@@ -56,7 +58,7 @@ namespace Faker
         /// <returns>A negative integer</returns>
         public static int NegativeNumber(int max)
         {
-            return random.Next(1, Math.Abs(max)) * -1;
+            return random.Value.Next(1, Math.Abs(max)) * -1;
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace Faker
         /// <returns>Random double value</returns>
         public static double Double()
         {
-            return random.NextDouble();
+            return random.Value.NextDouble();
         }
 
         /// <summary>

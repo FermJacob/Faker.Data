@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Text.RegularExpressions;
+
 namespace Faker
 {
     /// <summary>
@@ -20,6 +22,16 @@ namespace Faker
             int num = Number.RandomNumber(0, 26); // Zero to 25
             char val = (char)('a' + num);
             return val;
+        }
+
+        /// <summary>
+        /// Method not implemented
+        /// </summary>
+        /// <param name="s">String to use</param>
+        /// <returns>String numbered</returns>
+        public static string Numerify(this string s)
+        {
+            return Regex.Replace(s, "#", new MatchEvaluator((m) => Number.RandomNumber(0, 9).ToString()), RegexOptions.Compiled);
         }
     }
 }

@@ -13,6 +13,10 @@ namespace Faker
     /// </summary>
     public static class Name
     {
+        private static object firstNameLock = new object();
+        private static object femaleFirstNameLock = new object();
+        private static object lastNameLock = new object();
+        private static object ethnicityLock = new object();
         private static List<string> maleFirstName;
         private static List<string> femaleFirstName;
         private static List<string> firstName;
@@ -39,12 +43,15 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string FemaleFirstName()
         {
-            if (femaleFirstName == null)
+            lock (femaleFirstNameLock)
             {
-                femaleFirstName = XML.GetListString("FemaleFirstName");
-            }
+                if (femaleFirstName == null)
+                {
+                    femaleFirstName = XML.GetListString("FemaleFirstName");
+                }
 
-            return femaleFirstName[Number.RandomNumber(0, femaleFirstName.Count - 1)];
+                return femaleFirstName[Number.RandomNumber(0, femaleFirstName.Count - 1)];
+            }
         }
 
         /// <summary>
@@ -53,12 +60,15 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string LastName()
         {
-            if (lastName == null)
+            lock (lastNameLock)
             {
-                lastName = XML.GetListString("LastName");
-            }
+                if (lastName == null)
+                {
+                    lastName = XML.GetListString("LastName");
+                }
 
-            return lastName[Number.RandomNumber(0, lastName.Count - 1)];
+                return lastName[Number.RandomNumber(0, lastName.Count - 1)];
+            }
         }
 
         /// <summary>
@@ -76,14 +86,17 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string FirstName()
         {
-            if (firstName == null)
+            lock (firstNameLock)
             {
-                firstName = new List<string>();
-                firstName.AddRange(XML.GetListString("FemaleFirstName"));
-                firstName.AddRange(XML.GetListString("MaleFirstName"));
-            }
+                if (firstName == null)
+                {
+                    firstName = new List<string>();
+                    firstName.AddRange(XML.GetListString("FemaleFirstName"));
+                    firstName.AddRange(XML.GetListString("MaleFirstName"));
+                }
 
-            return firstName[Number.RandomNumber(0, firstName.Count - 1)];
+                return firstName[Number.RandomNumber(0, firstName.Count - 1)];
+            }
         }
 
         /// <summary>
@@ -106,12 +119,15 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string Ethnicity()
         {
-            if (ethnicity == null)
+            lock (ethnicityLock)
             {
-                ethnicity = XML.GetListString("Person", "Ethnicity");
-            }
+                if (ethnicity == null)
+                {
+                    ethnicity = XML.GetListString("Person", "Ethnicity");
+                }
 
-            return ethnicity[Number.RandomNumber(0, ethnicity.Count - 1)];
+                return ethnicity[Number.RandomNumber(0, ethnicity.Count - 1)];
+            }
         }
     }
 }

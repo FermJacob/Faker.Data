@@ -23,5 +23,24 @@ namespace Faker
         // Mac address
         // Protocol
         // Url
+        private static object hostsLock = new object();
+        private static List<string> hosts;
+
+        /// <summary>
+        /// Gets a random host
+        /// </summary>
+        /// <returns>Host as string</returns>
+        public static string Host()
+        {
+            lock (hostsLock)
+            {
+                if (hosts == null)
+                {
+                    hosts = XML.GetListString("User", "Host");
+                }
+
+                return hosts[Number.RandomNumber(0, hosts.Count - 1)];
+            }
+        }
     }
 }
