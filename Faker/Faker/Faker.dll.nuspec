@@ -2,16 +2,21 @@
 <package>
 	<metadata>
 		<id>Faker.Data</id>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 		<authors>Jacob Ferm</authors>
 		<owners>Jacob Ferm</owners>
 		<licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
     <iconUrl>http://fermium.io/favicon.ico</iconUrl>
 		<projectUrl>https://github.com/FermJacob/Faker</projectUrl>
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
-		<description>Faker.Data is a data generation utility that offers a wide variety of options to gather information.</description>
+		<description>
+      Faker.Data is a data generation utility that offers a wide variety of options to generate random information.
+      
+      Adding new generators weekly.
+    </description>
     <releaseNotes>
       <![CDATA[
+      v1.0.5 Adding Internet and User generators
       v1.0.4 Adding Image, Name, and Color generators
       v1.0.3 Adding Colors and number generator improvements
       v1.0.2 Added Random number generator and GeoLocation
