@@ -76,7 +76,7 @@ namespace Faker
                 return Password(length, Number.RandomNumber(5));
             }
 
-            return Regex.Replace(Password(length, 0), @"[^a-zA-Z0-9]", m => Utilities.Character().ToString());
+            return Password(length, 0);
         }
 
         /// <summary>
@@ -109,7 +109,6 @@ namespace Faker
         {
             string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
             string allowedNonAlphaNum = "!@#$%^&*()_-+=[{]};:<>|./?";
-            Random rd = new Random();
 
             if (nonAlphaNumericChars > length || length <= 0 || nonAlphaNumericChars < 0)
             {

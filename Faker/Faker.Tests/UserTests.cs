@@ -14,7 +14,10 @@ namespace Faker.Tests
     [TestClass]
     public class UserTests
     {
-        private static readonly string SpecialCharactersRegex = @"(?=^.{6,255}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*";
+        private static readonly string SpecialCharactersRegex = @"^(?=.*[a-z])(?=.*[\W])(?=.*[A-Z]){5,20}";
+        private static readonly string NoSpecialCharactersRegex = @"^(?=.*[a-zA-Z]){5,20}";
+        ////@"(?=^.{6,255}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*";
+
         [TestMethod]
         public void UsernameTest()
         {
@@ -42,7 +45,7 @@ namespace Faker.Tests
         [TestMethod]
         public void PasswordLengthNoSpecialCharsTest()
         {
-            Assert.IsTrue(Regex.IsMatch(User.Password(10, false), SpecialCharactersRegex));
+            Assert.IsTrue(Regex.IsMatch(User.Password(10, false), NoSpecialCharactersRegex));
         }
 
         [TestMethod]
