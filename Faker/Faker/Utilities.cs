@@ -3,7 +3,6 @@
 //     Copyright (c) 2016 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
-
 using System.Text.RegularExpressions;
 
 namespace Faker
@@ -22,6 +21,16 @@ namespace Faker
             int num = Number.RandomNumber(0, 26); // Zero to 25
             char val = (char)('a' + num);
             return val;
+        }
+
+        /// <summary>
+        /// Gets a random alpha numeric char
+        /// </summary>
+        /// <returns>A random char</returns>
+        public static char AlphaNumeric()
+        {
+            string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+            return allowedChars[Number.RandomNumber(allowedChars.Length)];
         }
 
         /// <summary>
