@@ -73,7 +73,7 @@ namespace Faker
         {
             if (useSpecialChars)
             {
-                return Password(length, Number.RandomNumber(5));
+                return Password(length, Number.RandomNumber(1, 5));
             }
 
             return Password(length, 0);

@@ -14,10 +14,16 @@ namespace Faker
     {
         // Logo
         private static List<string> name;
-        private static List<string> catchPhrase;
+        private static object catchPhraseLock = new object();
+        private static object catchPhrasePreLock = new object();
+        private static List<string> catchPhrasePre;
         private static List<string> suffix;
         private static List<string> sector;
         private static List<string> industry;
+        private static List<string> catchPhraseMid;
+        private static object catchPhraseMidLock = new object();
+        private static List<string> catchPhrasePos;
+        private static object catchPhrasePosLock = new object();
 
         /// <summary>
         /// Gets a suffix value
@@ -76,6 +82,66 @@ namespace Faker
             return val.ToUpper();
         }
 
+        /// <summary>
+        /// Method to get a catch phrase
+        /// </summary>
+        /// <returns>String of catch phrase</returns>
+        public static string CatchPhrase()
+        {
+            return CatchPhrasePre() + CatchPhraseMid() + CatchPhrasePos();
+        }
+
+        /// <summary>
+        /// Gets the pre catch phrase
+        /// </summary>
+        /// <returns>String value</returns>
+        public static string CatchPhrasePre()
+        {
+            lock (catchPhrasePreLock)
+            {
+                if (catchPhrasePre == null)
+                {
+                    catchPhrasePre = XML.GetListString("Company", "CatchPre");
+                }
+
+                return catchPhrasePre[Number.RandomNumber(0, catchPhrasePre.Count - 1)];
+            }
+        }
+
+        /// <summary>
+        /// Gets the mid catch phrase
+        /// </summary>
+        /// <returns>String value</returns>
+        public static string CatchPhraseMid()
+        {
+            lock (catchPhraseMidLock)
+            {
+                if (catchPhraseMid == null)
+                {
+                    catchPhraseMid = XML.GetListString("Company", "CatchPre");
+                }
+
+                return catchPhraseMid[Number.RandomNumber(0, catchPhraseMid.Count - 1)];
+            }
+        }
+
+        /// <summary>
+        /// Gets the post catch phrase
+        /// </summary>
+        /// <returns>String value</returns>
+        public static string CatchPhrasePos()
+        {
+            lock (catchPhrasePosLock)
+            {
+                if (catchPhrasePos == null)
+                {
+                    catchPhrasePos = XML.GetListString("Company", "CatchPre");
+                }
+
+                return catchPhrasePos[Number.RandomNumber(0, catchPhrasePos.Count - 1)];
+            }
+        }
+
         private static string Name()
         {
             if (name == null)
@@ -84,16 +150,6 @@ namespace Faker
             }
 
             return name[Number.RandomNumber(0, name.Count - 1)];
-        }
-
-        private static string CatchPhrase()
-        {
-            if (catchPhrase == null)
-            {
-                catchPhrase = XML.GetListString("Company", "CatchPhrase");
-            }
-
-            return catchPhrase[Number.RandomNumber(0, catchPhrase.Count - 1)];
         }
     }
 }

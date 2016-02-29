@@ -51,7 +51,8 @@ namespace Faker.Tests
         [TestMethod]
         public void PasswordLengthRandomSpecialCharsTest()
         {
-            Assert.IsTrue(Regex.IsMatch(User.Password(10, true), SpecialCharactersRegex));
+            string password = User.Password(10, true);
+            Assert.IsTrue(Regex.IsMatch(password, SpecialCharactersRegex), password);
         }
 
         [TestMethod]

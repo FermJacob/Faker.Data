@@ -47,5 +47,29 @@ namespace Faker.Tests
         {
             Assert.IsNotNull(Company.Suffix());
         }
+
+        [TestMethod]
+        public void CompanyPhrase()
+        {
+            Assert.IsNotNull(Company.CatchPhrase());
+        }
+
+        [TestMethod]
+        public void CompanyPre()
+        {
+            Assert.IsNotNull(Company.CatchPhrasePre());
+        }
+
+        [TestMethod]
+        public void CompanyMid()
+        {
+            Assert.IsNotNull(Company.CatchPhraseMid());
+        }
+
+        [TestMethod]
+        public void CompanyPos()
+        {
+            Assert.IsNotNull(Company.CatchPhrasePos());
+        }
     }
 }
