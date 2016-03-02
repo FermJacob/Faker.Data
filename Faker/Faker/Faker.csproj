@@ -45,6 +45,7 @@
     <Compile Include="Company.cs" />
     <Compile Include="CreditCard.cs" />
     <Compile Include="Currency.cs" />
+    <Compile Include="Date.cs" />
     <Compile Include="Education.cs" />
     <Compile Include="Finance.cs" />
     <Compile Include="GeoLocation.cs" />
