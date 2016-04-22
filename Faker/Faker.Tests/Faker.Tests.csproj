@@ -57,6 +57,7 @@
     <Compile Include="ColorTests.cs" />
     <Compile Include="CompanyTests.cs" />
     <Compile Include="CreditCardTests.cs" />
+    <Compile Include="DateTests.cs" />
     <Compile Include="GeoLocationTests.cs" />
     <Compile Include="ImageTests.cs" />
     <Compile Include="InternetTests.cs" />

@@ -32,6 +32,22 @@ namespace Faker
             return random.Value.Next(min, max);
         }
 
+        public static long RandomNumber(long min, long max)
+        {
+            var buf = new byte[8];
+            NextBytes(buf);
+            var longRand = BitConverter.ToInt64(buf, 0);
+
+            return Math.Abs(longRand % (max - min)) + min;
+        }
+
+        public static void NextBytes(byte[] buffer)
+        {
+            
+                random.Value.NextBytes(buffer);
+            
+        }
+
         /// <summary>
         /// Gets a random number from 0 to max variable
         /// </summary>
