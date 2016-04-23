@@ -52,7 +52,7 @@ namespace Faker
         {
             var to = DateTime.Now;
             var from = to.AddYears(years).AddMonths(months).Add(new TimeSpan(days, hours, minutes, seconds));
-            return Between(from, to);
+            return Between(to, from);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Faker
         /// <returns>A <see cref="DateTime"/></returns>
         public static DateTime Past()
         {
-            return PastWithTime(0, Number.RandomNumber(1, 465)).Date;
+            return PastWithTime(0, 0, Number.RandomNumber(1, 365)).Date;
         }
 
         /// <summary>

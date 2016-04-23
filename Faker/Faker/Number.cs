@@ -32,6 +32,12 @@ namespace Faker
             return random.Value.Next(min, max);
         }
 
+        /// <summary>
+        /// Method to get a random long value
+        /// </summary>
+        /// <param name="min">Minimum long</param>
+        /// <param name="max">Maximum long</param>
+        /// <returns>A <see cref="long"/></returns>
         public static long RandomNumber(long min, long max)
         {
             var buf = new byte[8];
@@ -41,11 +47,13 @@ namespace Faker
             return Math.Abs(longRand % (max - min)) + min;
         }
 
+        /// <summary>
+        /// Method to get the next bytes
+        /// </summary>
+        /// <param name="buffer">A <see cref="byte[]"/></param>
         public static void NextBytes(byte[] buffer)
-        {
-            
-                random.Value.NextBytes(buffer);
-            
+        { 
+            random.Value.NextBytes(buffer);
         }
 
         /// <summary>
