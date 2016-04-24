@@ -22,5 +22,24 @@ namespace Faker
         // School College
         // School HS
         // US School Generic
+        private static object majorLock = new object();
+        private static List<string> major;
+
+        /// <summary>
+        /// Gets a random major
+        /// </summary>
+        /// <returns>A string value</returns>
+        public static string Major()
+        {
+            lock (majorLock)
+            {
+                if (major == null)
+                {
+                    major = XML.GetListString("Education", "Majors");
+                }
+
+                return major[Number.RandomNumber(0, major.Count - 1)];
+            }
+        }
     }
 }

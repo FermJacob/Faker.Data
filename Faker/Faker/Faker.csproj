@@ -47,6 +47,7 @@
     <Compile Include="Currency.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Education.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Finance.cs" />
     <Compile Include="GeoLocation.cs" />
     <Compile Include="Images.cs" />

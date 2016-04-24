@@ -45,7 +45,8 @@ namespace Faker.Tests
         [TestMethod]
         public void Gender()
         {
-            Assert.IsTrue(Name.Gender().Equals("Male") || Name.Gender().Equals("Female"));
+            var name = Name.Gender();
+            Assert.IsTrue(name.Equals("Male") || name.Equals("Female"));
         }
 
         [TestMethod]
