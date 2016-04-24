@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Faker.Data</id>
-		<version>1.0.6</version>
+		<version>1.0.7</version>
 		<authors>Jacob Ferm</authors>
 		<owners>Jacob Ferm</owners>
 		<licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
@@ -10,12 +10,13 @@
 		<projectUrl>https://github.com/FermJacob/Faker</projectUrl>
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
 		<description>
-      Faker.Data is a data generation utility that offers a wide variety of options to generate random information.
-      
-      Adding new generators weekly.
+      Faker.Data is a data generation utility that offers a wide variety of options to generate random data.  An example of using this data is with Selenium to populate form fields.
+
+      If issues are found, log them at: https://github.com/FermJacob/Faker.Data/issues
     </description>
     <releaseNotes>
       <![CDATA[
+      v1.0.7 Adding Lorem and Date generators
       v1.0.6 Adding Company Phrase's
       v1.0.5 Adding Internet and User generators
       v1.0.4 Adding Image, Name, and Color generators
