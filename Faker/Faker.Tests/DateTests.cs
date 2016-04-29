@@ -98,7 +98,7 @@ namespace Faker.Tests
         {
             var result = Date.Recent(5);
             Assert.IsTrue(result <= this.date);
-            Assert.IsTrue(result >= this.date.AddDays(-5), result.ToString());
+            Assert.IsTrue(result >= this.date.AddDays(-6), result.ToString());
         }
 
         [TestMethod]

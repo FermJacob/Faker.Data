@@ -25,6 +25,12 @@ namespace Faker.Tests
         }
 
         [TestMethod]
+        public void Words1()
+        {
+            var result = Lorem.Words(3);
+        }
+
+        [TestMethod]
         public void Letter()
         {
             var result = Lorem.Letter();
