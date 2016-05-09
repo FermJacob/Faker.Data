@@ -3,6 +3,7 @@
 //     Copyright (c) 2016 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using Faker.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
