@@ -96,5 +96,17 @@ namespace Faker.Extensions
 
             return retArray;
         }
+
+        /// <summary>
+        /// Gets a random array element
+        /// </summary>
+        /// <typeparam name="T">A type</typeparam>
+        /// <param name="array">The array</param>
+        /// <returns>A random Type</returns>
+        public static T ArrayElement<T>(this T[] array)
+        {
+            int num = Number.RandomNumber(0, array.Length - 1);
+            return array[num];
+        }
     }
 }

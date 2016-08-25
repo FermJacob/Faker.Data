@@ -59,6 +59,7 @@
     <Compile Include="CompanyTests.cs" />
     <Compile Include="CreditCardTests.cs" />
     <Compile Include="DateTests.cs" />
+    <Compile Include="FinanceTests.cs" />
     <Compile Include="GeoLocationTests.cs" />
     <Compile Include="ImageTests.cs" />
     <Compile Include="InternetTests.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="PhoneTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EducationTests.cs" />
+    <Compile Include="ComputerTests.cs" />
+    <Compile Include="SportTests.cs" />
     <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +78,9 @@
       <Project>{49b36ab0-01aa-411e-a2c5-ee4d5bf9cf71}</Project>
       <Name>Faker</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

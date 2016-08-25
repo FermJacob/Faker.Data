@@ -68,5 +68,16 @@ namespace Faker
         {
             return Doc.Descendants(topNode).Descendants(node).Elements("Value").Select(item => (string)item).ToList();
         }
+
+        /// <summary>
+        /// Gets a object for grabbing node attributes
+        /// </summary>
+        /// <param name="topNode">Top node name</param>
+        /// <param name="node">Node name</param>
+        /// <returns>A <see cref="List{T}"/></returns>
+        public static List<XElement> GetListObject(XName topNode, XName node)
+        {
+            return Doc.Descendants(topNode).Descendants(node).Elements("Value").ToList();
+        }
     }
 }

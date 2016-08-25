@@ -3,6 +3,7 @@
 //     Copyright (c) 2016 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using System.Configuration;
 using System.Text.RegularExpressions;
 
 namespace Faker

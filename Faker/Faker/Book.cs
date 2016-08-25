@@ -20,5 +20,6 @@ namespace Faker
         // Author
         // Publisher
         // Genre
+        // Type - Hard cover, Soft, electronic
     }
 }

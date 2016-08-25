@@ -20,5 +20,6 @@ namespace Faker
         // Song title
         // Artist
         // Publisher
+        // Genre
     }
 }
