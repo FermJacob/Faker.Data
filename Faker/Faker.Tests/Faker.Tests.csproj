@@ -60,6 +60,7 @@
     <Compile Include="CreditCardTests.cs" />
     <Compile Include="DateTests.cs" />
     <Compile Include="FinanceTests.cs" />
+    <Compile Include="FuelPricesTests.cs" />
     <Compile Include="GeoLocationTests.cs" />
     <Compile Include="ImageTests.cs" />
     <Compile Include="InternetTests.cs" />

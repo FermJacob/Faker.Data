@@ -112,7 +112,7 @@ namespace Faker.Tests
         public void Month()
         {
             var result = Date.Month();
-            Assert.IsTrue(result.Length > 3, result);
+            Assert.IsTrue(result.Length >= 3, result);
         }
 
         [TestMethod]
