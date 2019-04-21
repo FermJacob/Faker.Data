@@ -50,6 +50,30 @@ namespace Faker.Tests
         }
 
         [TestMethod]
+        public void GenderCheckRatio()
+        {
+            int numberOfMen = 0;
+            int numberOfWomen = 0;
+            for (var i = 0; i < 1000; i++)
+            {
+                var gender = Name.Gender();
+                if (gender.Equals("Female", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    numberOfWomen++;
+                }
+                else
+                {
+                    numberOfMen++;
+                }
+            }
+
+            if (numberOfWomen < 200 || numberOfMen < 200)
+            {
+                Assert.Fail("Number of women: " + numberOfWomen + " Number of Men: " + numberOfMen);
+            }
+        }
+
+        [TestMethod]
         public void Ethnicity()
         {
             Assert.IsNotNull(Name.Ethnicity());

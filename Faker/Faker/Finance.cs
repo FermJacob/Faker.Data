@@ -7,6 +7,7 @@ using Faker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,6 +96,8 @@ namespace Faker
             {
                 try
                 {
+                    // Fix this when moving to .Net Standard.  The version of .Net Framework being used here does not enable TLS1.2 by default
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     string url = GetAPIString("https://www.quandl.com/api/v3/datasets/FMAC/5US.json");
 
                     var result = RunRequest(url).Content.ReadAsAsync<YearAdjustable51JSON>().Result;

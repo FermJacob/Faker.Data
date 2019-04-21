@@ -134,7 +134,7 @@ namespace Faker
         /// <returns>Boolean of true or false</returns>
         public static bool Bool()
         {
-            return RandomNumber(0, 1) == 0;
+            return RandomNumber(0, 100) % 2 == 0;
         }
     }
 }
