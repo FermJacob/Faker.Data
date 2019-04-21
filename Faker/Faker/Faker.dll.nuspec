@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Faker.Data</id>
-		<version>1.0.7</version>
+		<version>1.0.8</version>
 		<authors>Jacob Ferm</authors>
 		<owners>Jacob Ferm</owners>
 		<licenseUrl>https://raw.githubusercontent.com/FermJacob/Faker/master/LICENSE</licenseUrl>
@@ -16,6 +16,7 @@
     </description>
     <releaseNotes>
       <![CDATA[
+      v1.0.8 Gender issue fix
       v1.0.7 Adding Lorem and Date generators
       v1.0.6 Adding Company Phrase's
       v1.0.5 Adding Internet and User generators
