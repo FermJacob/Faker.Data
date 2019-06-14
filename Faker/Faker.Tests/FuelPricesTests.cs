@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="FuelPricesTests.cs">
-//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Microsoft.VisualStudio.TestTools.UnitTesting;

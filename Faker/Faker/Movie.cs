@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Movie.cs">
-//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;

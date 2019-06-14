@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="InternetTests.cs">
-//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -71,6 +71,18 @@ namespace Faker.Tests
         public void Protocol()
         {
             Assert.IsNotNull(Internet.Protocol());
+        }
+
+        [TestMethod]
+        public void DomainUrl()
+        {
+            Assert.IsNotNull(Internet.DomainUrl());
+        }
+
+        [TestMethod]
+        public void BrowserProtocol()
+        {
+            Assert.IsNotNull(Internet.BrowserProtocol());
         }
     }
 }

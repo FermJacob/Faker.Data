@@ -1,10 +1,11 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Internet.cs">
-//     Copyright (c) 2016 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Faker
 {
@@ -160,6 +161,31 @@ namespace Faker
             string[] protocols = new string[] { "http", "https", "ftp", "ssh" };
 
             return protocols[Number.RandomNumber(protocols.Count())];
+        }
+
+        /// <summary>
+        /// Gets a random browser protocol
+        /// </summary>
+        /// <returns>Browser protocol as a string</returns>
+        public static string BrowserProtocol()
+        {
+            string[] protocols = new string[] { "http", "https" };
+
+            return protocols[Number.RandomNumber(protocols.Count())];
+        }
+
+        /// <summary>
+        /// Gets a random domain url
+        /// </summary>
+        /// <returns>Domain url as a string</returns>
+        public static string DomainUrl()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(BrowserProtocol());
+            sb.Append("://");
+            sb.Append(Company.CatchPhrase());
+            sb.Append(TopDomainSuffix());
+            return sb.ToString();
         }
     }
 }
