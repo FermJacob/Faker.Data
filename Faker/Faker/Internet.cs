@@ -183,7 +183,7 @@ namespace Faker
             StringBuilder sb = new StringBuilder();
             sb.Append(BrowserProtocol());
             sb.Append("://");
-            sb.Append(Company.CatchPhrase());
+            sb.Append(Company.CatchPhrase().Replace("  ", string.Empty));
             sb.Append(TopDomainSuffix());
             return sb.ToString();
         }
