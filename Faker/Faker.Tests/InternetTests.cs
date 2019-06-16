@@ -4,6 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -76,7 +77,29 @@ namespace Faker.Tests
         [TestMethod]
         public void DomainUrl()
         {
-            Assert.IsNotNull(Internet.DomainUrl());
+            Assert.IsTrue(Regex.IsMatch(Internet.DomainUrl(), @"^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"));
+        }
+
+        [TestMethod]
+        public void SubDomainUrl()
+        {
+            var url = Internet.SubDomainUrl();
+            Console.WriteLine(url);
+            Assert.IsTrue(Regex.IsMatch(url, @"^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"));
+        }
+
+        [TestMethod]
+        public void DomainUrlCountry()
+        {
+            Assert.IsTrue(Regex.IsMatch(Internet.DomainUrl(true), @"^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"));
+        }
+
+        [TestMethod]
+        public void SubDomainUrlCountry()
+        {
+            var url = Internet.SubDomainUrl(true);
+            Console.WriteLine(url);
+            Assert.IsTrue(Regex.IsMatch(url, @"^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"));
         }
 
         [TestMethod]

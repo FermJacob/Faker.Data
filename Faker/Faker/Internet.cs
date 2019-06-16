@@ -178,14 +178,33 @@ namespace Faker
         /// Gets a random domain url
         /// </summary>
         /// <returns>Domain url as a string</returns>
-        public static string DomainUrl()
+        public static string DomainUrl(bool useTopCountryDomain = false)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(BrowserProtocol());
-            sb.Append("://");
-            sb.Append(Company.CatchPhrase().Replace("  ", string.Empty));
-            sb.Append(TopDomainSuffix());
-            return sb.ToString();
+            string url = BrowserProtocol() + "://" + string.Join("", Lorem.Words(2));
+            if (useTopCountryDomain)
+            {
+                url += TopCountryDomainSuffix();
+            }
+            else
+            {
+                url += TopDomainSuffix();
+            }
+            return url;
+        }
+
+
+        public static string SubDomainUrl(bool useTopCountryDomain = false)
+        {
+            string url = BrowserProtocol() + "://" + Lorem.Word().Replace(" ", string.Empty) + "." + string.Join("",Lorem.Words(2));
+            if (useTopCountryDomain)
+            {
+                url += TopCountryDomainSuffix();
+            }
+            else
+            {
+                url +=TopDomainSuffix();
+            }
+            return url;
         }
     }
 }
