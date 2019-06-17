@@ -3,6 +3,7 @@
 //     Copyright (c) 2019 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using Faker.Models;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -17,7 +18,7 @@ namespace Faker
     public static class FuelPrices
     {
         private static object fuelPricesLock = new object();
-        private static Models.FuelPricesModel fuelPrices;
+        private static FuelPricesModel fuelPrices;
         private static HttpClient client = new HttpClient();
 
         /// <summary>
