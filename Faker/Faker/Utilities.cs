@@ -5,6 +5,8 @@
 //-----------------------------------------------------------------------
 using System.Configuration;
 using System.Text.RegularExpressions;
+using Faker.Extensions;
+using System.Collections.Generic;
 
 namespace Faker
 {
@@ -43,5 +45,28 @@ namespace Faker
         {
             return Regex.Replace(s, "#", new MatchEvaluator((m) => Number.RandomNumber(0, 9).ToString()), RegexOptions.Compiled);
         }
+
+        /// <summary>
+        /// Slugifies the string text as valid URLs -- IE: "Hello World" -> "Hello-World".
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string Slugify(string text)
+        {
+            var str = text.Replace(" ", "-").RemoveDiacritics();
+            return Regex.Replace(str, @"[^a-zA-Z0-9\.\-_]+", "");
+        }
+
+        /// <summary>
+        /// Takes a list of strings and adds separator between the works 
+        /// </summary>
+        /// <param name="parts">List of parts</param>
+        /// <param name="separator">Separator to use</param>
+        /// <returns>String of slashified items from list</returns>
+        public static string Slashify(IEnumerable<string> parts, string separator = "/")
+        {
+            return string.Join(separator, parts);
+        }
+
     }
 }

@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +78,28 @@ namespace Faker.Extensions
             {
                 yield return i;
             }
+        }
+
+        /// <summary>
+        /// A string extension method that removes the diacritics character from the strings.
+        /// </summary>
+        /// <param name="str">String to use</param>
+        /// <returns>String without diacritices</returns>
+        public static string RemoveDiacritics(this string str)
+        {
+            var normalizedString = str.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder();
+
+            foreach (var c in normalizedString)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
     }
 }

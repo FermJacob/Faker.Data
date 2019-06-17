@@ -177,6 +177,7 @@ namespace Faker
         /// <summary>
         /// Gets a random domain url
         /// </summary>
+        /// <param name="useTopCountryDomain">Use the top country domains</param>
         /// <returns>Domain url as a string</returns>
         public static string DomainUrl(bool useTopCountryDomain = false)
         {
@@ -192,7 +193,11 @@ namespace Faker
             return url;
         }
 
-
+        /// <summary>
+        /// Gets a random URL with subdomain
+        /// </summary>
+        /// <param name="useTopCountryDomain">Use the top country domains</param>
+        /// <returns>Subdomain url as a string</returns>
         public static string SubDomainUrl(bool useTopCountryDomain = false)
         {
             string url = BrowserProtocol() + "://" + Lorem.Word().Replace(" ", string.Empty) + "." + string.Join("",Lorem.Words(2));
@@ -205,6 +210,32 @@ namespace Faker
                 url +=TopDomainSuffix();
             }
             return url;
+        }
+
+        /// <summary>
+        /// Gets a random url with path
+        /// </summary>
+        /// <param name="useSubDomain">Use subdomain</param>
+        /// <param name="useTopCountryDomain">Use the top country domains</param>
+        /// <param name="depth">Length of paths to use</param>
+        /// <returns>A string url with paths</returns>
+        public static string UrlWithPath(bool useSubDomain = false, bool useTopCountryDomain = false, int depth = 3)
+        {
+            var words = Lorem.Words(depth)
+               .Select(s => s.ToLower())
+               .ToList();
+            var url = string.Empty;
+
+            if (useSubDomain)
+            {
+                url = SubDomainUrl(useTopCountryDomain);
+            }
+            else
+            {
+                url = DomainUrl(useTopCountryDomain);
+            }
+
+            return url + "/" + Utilities.Slashify(words);
         }
     }
 }

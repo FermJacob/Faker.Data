@@ -107,5 +107,13 @@ namespace Faker.Tests
         {
             Assert.IsNotNull(Internet.BrowserProtocol());
         }
+
+        [TestMethod]
+        public void UrlWithPath()
+        {
+            var url = Internet.UrlWithPath();
+            Console.WriteLine(url);
+            Assert.IsTrue(Regex.IsMatch(url, @"^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"));
+        }
     }
 }
