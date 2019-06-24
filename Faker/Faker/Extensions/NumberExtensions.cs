@@ -14,7 +14,7 @@ namespace Faker.Extensions
     /// <summary>
     /// Static number extensions class
     /// </summary>
-    public static class NumberExtensions 
+    public static class NumberExtensions
     {
         /// <summary>
         /// Method from one number to another
@@ -68,6 +68,19 @@ namespace Faker.Extensions
             {
                 yield return function.Invoke(i);
             }
+        }
+
+        /// <summary>
+        /// Returns a random number from a list with excluding numbers
+        /// </summary>
+        /// <param name="list">List of numbers to pick from</param>
+        /// <param name="excludeNumbers">Exclude random numbers the original list</param>
+        /// <returns>A random integer</returns>
+        public static int GetRandomIntFromList(this IEnumerable<int> list, IEnumerable<int> excludeNumbers)
+        {
+            var range = list.Where(i => !excludeNumbers.Contains(i));
+            var index = Number.RandomNumber(0, list.Count() - excludeNumbers.Count());
+            return range.ElementAt(index);
         }
     }
 }

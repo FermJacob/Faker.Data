@@ -3,6 +3,7 @@
 //     Copyright (c) 2019 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -107,6 +108,18 @@ namespace Faker.Extensions
         {
             int num = Number.RandomNumber(0, array.Length - 1);
             return array[num];
+        }
+
+        /// <summary>
+        /// Gets a random set of data from a list
+        /// </summary>
+        /// <typeparam name="T">Type of object</typeparam>
+        /// <param name="list">List to pull data from</param>
+        /// <param name="elementsCount">Number of elements to return</param>
+        /// <returns>A list with the number of items desired</returns>
+        public static List<T> GetRandomElements<T>(this IEnumerable<T> list, int elementsCount)
+        {
+            return list.OrderBy(arg => Guid.NewGuid()).Take(elementsCount).ToList();
         }
     }
 }
