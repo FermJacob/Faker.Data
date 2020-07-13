@@ -11,8 +11,9 @@
     <Description>Faker.Data is a data generation utility that offers a wide variety of options to generate random data.  An example of using this data is with Selenium to populate form fields.
 
      If issues are found, log them at: https://github.com/FermJacob/Faker.Data/issues</Description>
-    <Copyright>(c) 2016 - Jacob Ferm</Copyright>
+    <Copyright>(c) 2020 - Jacob Ferm</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/FermJacob/Faker.Data</PackageProjectUrl>
     <PackageIcon>FakerDataIcon.png</PackageIcon>
     <RepositoryUrl>https://github.com/FermJacob/Faker.Data</RepositoryUrl>
