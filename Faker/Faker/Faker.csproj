@@ -2,15 +2,49 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
+    <Authors>Jacob Ferm</Authors>
+    <PackageId>Faker.Data</PackageId>
+    <Product>Faker.Data</Product>
+    <Description>Faker.Data is a data generation utility that offers a wide variety of options to generate random data.  An example of using this data is with Selenium to populate form fields.
+
+     If issues are found, log them at: https://github.com/FermJacob/Faker.Data/issues</Description>
+    <Copyright>(c) 2016 - Jacob Ferm</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/FermJacob/Faker.Data</PackageProjectUrl>
+    <PackageIcon>FakerDataIcon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/FermJacob/Faker.Data</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Fake-Data Fake Data</PackageTags>
+    <PackageReleaseNotes>
+      v2.0.0 .NetStandard implementation
+      v1.0.8 Gender issue fix
+      v1.0.7 Adding Lorem and Date generators
+      v1.0.6 Adding Company Phrase's
+      v1.0.5 Adding Internet and User generators
+      v1.0.4 Adding Image, Name, and Color generators
+      v1.0.3 Adding Colors and number generator improvements
+      v1.0.2 Added Random number generator and GeoLocation
+      v1.0.1 Added CA Zip Codes, US Cities, US Countys, and US Zips
+    </PackageReleaseNotes>
+    <DebugSymbols>true</DebugSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Data.xml" />
+    <None Include="..\FakerDataIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
