@@ -5,7 +5,7 @@ It is available via [NuGet Package](https://www.nuget.org/packages/Faker.Data/)
 
 |  | Status |
 | --- | --- |
-| CI Build | ![CI Build Status](https://ferm.visualstudio.com/DefaultCollection/_apis/public/build/definitions/c55f9b7a-25b6-4f2e-8b7e-b1c8345d9344/10/badge)  |
+| CI Build | ![.NET Core](https://github.com/FermJacob/Faker.Data/workflows/.NET%20Core/badge.svg?branch=master)  |
 | NuGet | [![NuGet Status](https://buildstats.info/nuget/faker.data)](https://www.nuget.org/packages/Faker.Data/) |
 
 Install the NuGet package via the Package Manager or
