@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore Faker/Faker.sln
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build Faker/Faker.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test Faker/Faker.sln --no-restore --verbosity normal
   release_drafter:
     runs-on: ubuntu-latest
     steps:
