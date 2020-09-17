@@ -24,7 +24,7 @@ version-resolver:
       - 'type: enhancement'
   patch:
     labels:
-      - 'type: bug'
-      - 'type: docs'
-      - 'type: dependencies'
+      - 'bug'
+      - 'docs'
+      - 'dependencies'
   default: patch
