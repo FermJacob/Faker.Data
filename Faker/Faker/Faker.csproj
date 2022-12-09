@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.0</Version>
-    <PackageVersion>2.0.0</PackageVersion>
+    <Version>2.0.1</Version>
+    <PackageVersion>2.0.1</PackageVersion>
     <Authors>Jacob Ferm</Authors>
     <PackageId>Faker.Data</PackageId>
     <Product>Faker.Data</Product>
@@ -20,6 +20,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Fake-Data Fake Data</PackageTags>
     <PackageReleaseNotes>
+      v2.0.1 NuGet dependant package updates
       v2.0.0 .NetStandard implementation
       v1.0.8 Gender issue fix
       v1.0.7 Adding Lorem and Date generators
@@ -45,7 +46,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <!-- Note: System.Drawing.Common v7.0.0 will not work with 3.1 tests project-->
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
