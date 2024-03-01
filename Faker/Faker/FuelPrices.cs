@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="FuelPrices.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Faker.Models;
@@ -17,9 +17,9 @@ namespace Faker
     /// </summary>
     public static class FuelPrices
     {
-        private static object fuelPricesLock = new object();
+        private static readonly object fuelPricesLock = new();
         private static FuelPricesModel fuelPrices;
-        private static HttpClient client = new HttpClient();
+        private static HttpClient client = new();
 
         /// <summary>
         /// Gets a compressed natural gas on today's date
@@ -118,23 +118,20 @@ namespace Faker
         /// <summary>
         /// Makes an API call if provided to pull data
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S1075:URIs should not be hardcoded", Justification = "")]
         private static void LoadFuelData()
         {
             try
             {
                 // Data from: http://www.fueleconomy.gov/feg/ws/index.shtml
-                string url = "http://fueleconomy.gov/ws/rest/fuelprices";
+                const string url = "http://fueleconomy.gov/ws/rest/fuelprices";
 
                 var result = RunRequest(url).Content.ReadAsStringAsync().Result;
 
                 var buffer = Encoding.UTF8.GetBytes(result);
-                using (var stream = new MemoryStream(buffer))
-                {
-                    var serializer = new XmlSerializer(typeof(Models.FuelPricesModel));
-                    fuelPrices = (Models.FuelPricesModel)serializer.Deserialize(stream);
-                }
-
-                return;
+                using var stream = new MemoryStream(buffer);
+                var serializer = new XmlSerializer(typeof(Models.FuelPricesModel));
+                fuelPrices = (Models.FuelPricesModel)serializer.Deserialize(stream);
             }
             catch (Exception e)
             {

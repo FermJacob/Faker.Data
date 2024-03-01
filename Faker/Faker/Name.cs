@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Name.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -13,10 +13,10 @@ namespace Faker
     /// </summary>
     public static class Name
     {
-        private static object firstNameLock = new object();
-        private static object femaleFirstNameLock = new object();
-        private static object lastNameLock = new object();
-        private static object ethnicityLock = new object();
+        private static readonly object firstNameLock = new();
+        private static readonly object femaleFirstNameLock = new();
+        private static readonly object lastNameLock = new();
+        private static readonly object ethnicityLock = new();
         private static List<string> maleFirstName;
         private static List<string> femaleFirstName;
         private static List<string> firstName;
@@ -29,10 +29,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string MaleFirstName()
         {
-            if (maleFirstName == null)
-            {
-                maleFirstName = XML.GetListString("MaleFirstName");
-            }
+            maleFirstName ??= XML.GetListString("MaleFirstName");
 
             return maleFirstName[Number.RandomNumber(0, maleFirstName.Count - 1)];
         }
@@ -45,10 +42,7 @@ namespace Faker
         {
             lock (femaleFirstNameLock)
             {
-                if (femaleFirstName == null)
-                {
-                    femaleFirstName = XML.GetListString("FemaleFirstName");
-                }
+                femaleFirstName ??= XML.GetListString("FemaleFirstName");
 
                 return femaleFirstName[Number.RandomNumber(0, femaleFirstName.Count - 1)];
             }
@@ -62,10 +56,7 @@ namespace Faker
         {
             lock (lastNameLock)
             {
-                if (lastName == null)
-                {
-                    lastName = XML.GetListString("LastName");
-                }
+                lastName ??= XML.GetListString("LastName");
 
                 return lastName[Number.RandomNumber(0, lastName.Count - 1)];
             }
@@ -121,10 +112,7 @@ namespace Faker
         {
             lock (ethnicityLock)
             {
-                if (ethnicity == null)
-                {
-                    ethnicity = XML.GetListString("Person", "Ethnicity");
-                }
+                ethnicity ??= XML.GetListString("Person", "Ethnicity");
 
                 return ethnicity[Number.RandomNumber(0, ethnicity.Count - 1)];
             }

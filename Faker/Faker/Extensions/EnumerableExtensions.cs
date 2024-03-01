@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="EnumerableExtensions.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -84,7 +84,7 @@ namespace Faker.Extensions
             T[] retArray = new T[list.Count];
             list.CopyTo(retArray, 0);
 
-            for (int i = 0; i < list.Count; i += 1)
+            for (int i = 0; i < list.Count; ++i)
             {
                 int swapIndex = Number.RandomNumber(i, list.Count);
                 if (swapIndex != i)
@@ -119,7 +119,7 @@ namespace Faker.Extensions
         /// <returns>A list with the number of items desired</returns>
         public static List<T> GetRandomElements<T>(this IEnumerable<T> list, int elementsCount)
         {
-            return list.OrderBy(arg => Guid.NewGuid()).Take(elementsCount).ToList();
+            return list.OrderBy(_ => Guid.NewGuid()).Take(elementsCount).ToList();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Number.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -14,7 +14,7 @@ namespace Faker
     public static class Number
     {
         private static int seed = Environment.TickCount;
-        private static ThreadLocal<Random> random = new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref seed)));
+        private static readonly ThreadLocal<Random> random = new(() => new Random(Interlocked.Increment(ref seed)));
 
         /// <summary>
         /// Gets a random number
@@ -48,15 +48,6 @@ namespace Faker
         }
 
         /// <summary>
-        /// Method to get the next bytes
-        /// </summary>
-        /// <param name="buffer">A <see cref="byte[]"/></param>
-        public static void NextBytes(byte[] buffer)
-        { 
-            random.Value.NextBytes(buffer);
-        }
-
-        /// <summary>
         /// Gets a random number from 0 to max variable
         /// </summary>
         /// <param name="max">Max integer to use</param>
@@ -73,6 +64,15 @@ namespace Faker
         public static int RandomNumber()
         {
             return random.Value.Next();
+        }
+
+        /// <summary>
+        /// Method to get the next bytes
+        /// </summary>
+        /// <param name="buffer">A <see cref="byte[]"/></param>
+        public static void NextBytes(byte[] buffer)
+        {
+            random.Value.NextBytes(buffer);
         }
 
         /// <summary>

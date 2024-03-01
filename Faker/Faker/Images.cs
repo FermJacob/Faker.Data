@@ -1,18 +1,20 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Images.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.Versioning;
 
 namespace Faker
 {
     /// <summary>
     /// Static images class
     /// </summary>
+    [SupportedOSPlatform("windows")]
     public static class Images
     {
         /// <summary>
@@ -60,11 +62,11 @@ namespace Faker
             {
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
-                    Rectangle rect = new Rectangle(0, 0, 200, 200);
+                    Rectangle rect = new(0, 0, 200, 200);
                     g.FillRectangle(new SolidBrush(color), rect);
                 }
 
-                MemoryStream ms = new MemoryStream();
+                MemoryStream ms = new();
 
                 bmp.Save(ms, format);
                 image = new Bitmap(ms);

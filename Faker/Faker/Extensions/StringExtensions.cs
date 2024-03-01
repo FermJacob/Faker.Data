@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="StringExtensions.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -26,9 +26,9 @@ namespace Faker.Extensions
         /// <returns>A <see cref="string"/></returns>
         public static string Replace(this string str, char item, Func<char> character)
         {
-            StringBuilder builder = new StringBuilder(str.Length);
+            StringBuilder builder = new(str.Length);
 
-            foreach (char c in str.ToCharArray())
+            foreach (char c in str)
             {
                 builder.Append(c == item ? character() : c);
             }
@@ -43,7 +43,7 @@ namespace Faker.Extensions
         /// <returns>A <see cref="string"/> from specified format</returns>
         public static string Numerify(this string numberString)
         {
-            return numberString.Replace('#', () => Number.RandomNumber(10).ToString().ToCharArray()[0]);
+            return numberString.Replace('#', () => Number.RandomNumber(10).ToString()[0]);
         }
 
         /// <summary>

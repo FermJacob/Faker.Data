@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="FuelPricesModel.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -9,8 +9,6 @@ using System.Xml.Serialization;
 
 namespace Faker.Models
 {
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "*", Justification = "Supressing stylecop to allow for parsing")]
-    [SuppressMessage("StyleCop.CSharp.NamingRules", "*", Justification = "Supressing stylecop to allow for parsing")]
     [Serializable]
     [XmlRoot("fuelPrices")]
     public class FuelPricesModel

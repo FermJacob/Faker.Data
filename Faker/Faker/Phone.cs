@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Phone.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -40,30 +40,26 @@ namespace Faker
         /// <returns>A <see cref="string"/> of a random format</returns>
         private static string FormatPhoneNumber()
         {
-            switch (Number.RandomNumber(20))
+            return Number.RandomNumber(20) switch
             {
-                case 0: return "###-###-#### x#####";
-                case 1: return "###-###-#### x####";
-                case 2: return "###-###-#### x###";
-                case 3:
-                case 4: return "###-###-####";
-                case 5: return "###.###.#### x#####";
-                case 6: return "###.###.#### x####";
-                case 7: return "###.###.#### x###";
-                case 8:
-                case 9: return "###.###.####";
-                case 10: return "(###)###-#### x#####";
-                case 11: return "(###)###-#### x####";
-                case 12: return "(###)###-#### x###";
-                case 13:
-                case 14: return "(###)###-####";
-                case 15: return "1-###-###-#### x#####";
-                case 16: return "1-###-###-#### x####";
-                case 17: return "1-###-###-#### x###";
-                case 18:
-                case 19: return "1-###-###-####";
-                default: throw new ApplicationException();
-            }
+                0 => "###-###-#### x#####",
+                1 => "###-###-#### x####",
+                2 => "###-###-#### x###",
+                3 or 4 => "###-###-####",
+                5 => "###.###.#### x#####",
+                6 => "###.###.#### x####",
+                7 => "###.###.#### x###",
+                8 or 9 => "###.###.####",
+                10 => "(###)###-#### x#####",
+                11 => "(###)###-#### x####",
+                12 => "(###)###-#### x###",
+                13 or 14 => "(###)###-####",
+                15 => "1-###-###-#### x#####",
+                16 => "1-###-###-#### x####",
+                17 => "1-###-###-#### x###",
+                18 or 19 => "1-###-###-####",
+                _ => throw new NotSupportedException("This error should not return, but handling a default edge case.  Please report to GitHub"),
+            };
         }
     }
 }

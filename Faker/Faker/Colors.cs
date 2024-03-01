@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Colors.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
@@ -20,12 +20,12 @@ namespace Faker
         private static List<string> colors;
 
         /// <summary>
-        /// Get a set of RGB colors 
+        /// Get a set of RGB colors
         /// </summary>
         /// <returns>Returns an integer array of numbers 0 - 255</returns>
         public static int[] RGB()
         {
-            int[] rgbColor = new int[] { Number.RandomNumber(0, 255), Number.RandomNumber(0, 255), Number.RandomNumber(0, 255) };
+            int[] rgbColor = { Number.RandomNumber(0, 255), Number.RandomNumber(0, 255), Number.RandomNumber(0, 255) };
             return rgbColor;
         }
 
@@ -35,8 +35,8 @@ namespace Faker
         /// <returns>A HEX number as a string</returns>
         public static string Hex()
         {
-            List<string> codes = new List<string> { "A", "B", "C", "D", "E", "F", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
-            StringBuilder color = new StringBuilder();
+            List<string> codes = new() { "A", "B", "C", "D", "E", "F", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+            StringBuilder color = new();
 
             for (int i = 0; i < 6; i++)
             {
@@ -52,10 +52,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string SystemColor()
         {
-            if (systemColors == null)
-            {
-                systemColors = LoadSystemColors();
-            }
+            systemColors ??= LoadSystemColors();
 
             return systemColors[Number.RandomNumber(0, systemColors.Count - 1)].Name;
         }
@@ -66,10 +63,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string ColorString()
         {
-            if (colors == null)
-            {
-                colors = XML.GetListString("Color");
-            }
+            colors ??= XML.GetListString("Color");
 
             return colors[Number.RandomNumber(0, colors.Count - 1)];
         }

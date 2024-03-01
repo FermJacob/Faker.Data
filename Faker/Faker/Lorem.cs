@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Lorem.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Faker.Extensions;
@@ -15,7 +15,7 @@ namespace Faker
     /// </summary>
     public static class Lorem
     {
-        private static object loremLock = new object();
+        private static readonly object loremLock = new();
         private static List<string> lorem;
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Faker
                 throw new ArgumentException("Number has to be more than 1");
             }
 
-            return number.Times(x => Sentence()).ToList();
+            return number.Times(_ => Sentence()).ToList();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Faker
         public static List<string> Sentences()
         {
             int number = Number.RandomNumber(1, 10);
-            return number.Times(x => Sentence()).ToList();
+            return number.Times(_ => Sentence()).ToList();
         }
 
         /// <summary>
@@ -75,10 +75,7 @@ namespace Faker
         {
             lock (loremLock)
             {
-                if (lorem == null)
-                {
-                    lorem = XML.GetListString("Lorem");
-                }
+                lorem ??= XML.GetListString("Lorem");
 
                 return lorem[Number.RandomNumber(0, lorem.Count - 1)];
             }
@@ -91,7 +88,7 @@ namespace Faker
         /// <returns>A list of <see cref="string"/></returns>
         public static List<string> Words(int number)
         {
-            return number.Times(x => Word()).ToList();
+            return number.Times(_ => Word()).ToList();
         }
 
         /// <summary>
@@ -101,7 +98,7 @@ namespace Faker
         public static List<string> Words()
         {
             int number = Number.RandomNumber(1, 10);
-            return number.Times(x => Word()).ToList();
+            return number.Times(_ => Word()).ToList();
         }
 
         /// <summary>
@@ -126,7 +123,7 @@ namespace Faker
         /// <returns>A list of <see cref="char"/></returns>
         public static List<char> Letters(int number)
         {
-            return number.Times(x => Letter()).ToList();
+            return number.Times(_ => Letter()).ToList();
         }
 
         /// <summary>
@@ -136,7 +133,7 @@ namespace Faker
         public static List<char> Letters()
         {
             int number = Number.RandomNumber(1, 10);
-            return number.Times(x => Letter()).ToList();
+            return number.Times(_ => Letter()).ToList();
         }
 
         /// <summary>
@@ -151,7 +148,7 @@ namespace Faker
                 throw new ArgumentException("No string was inputted.");
             }
 
-            return input.First().ToString().ToUpper() + input.Substring(1);
+            return string.Concat(input[0].ToString().ToUpper(), input.AsSpan(1));
         }
 
         /// <summary>
@@ -180,7 +177,7 @@ namespace Faker
         /// <returns>A list of <see cref="string"/></returns>
         public static List<string> Paragraphs(int numberOfParagraphs)
         {
-            return numberOfParagraphs.Times(x => Paragraph()).ToList();
+            return numberOfParagraphs.Times(_ => Paragraph()).ToList();
         }
 
         /// <summary>
@@ -189,7 +186,7 @@ namespace Faker
         /// <returns>A list of <see cref="string"/></returns>
         public static List<string> Paragraphs()
         {
-            return Number.RandomNumber(1, 10).Times(x => Paragraph()).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => Paragraph()).ToList();
         }
     }
 }

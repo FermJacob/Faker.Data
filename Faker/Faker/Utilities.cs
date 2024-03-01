@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Utilities.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Configuration;
@@ -43,7 +43,7 @@ namespace Faker
         /// <returns>String numbered</returns>
         public static string Numerify(this string s)
         {
-            return Regex.Replace(s, "#", new MatchEvaluator((m) => Number.RandomNumber(0, 9).ToString()), RegexOptions.Compiled);
+            return Regex.Replace(s, "#", new MatchEvaluator((_) => Number.RandomNumber(0, 9).ToString()), RegexOptions.Compiled);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Faker
         }
 
         /// <summary>
-        /// Takes a list of strings and adds separator between the works 
+        /// Takes a list of strings and adds separator between the works
         /// </summary>
         /// <param name="parts">List of parts</param>
         /// <param name="separator">Separator to use</param>
@@ -67,6 +67,5 @@ namespace Faker
         {
             return string.Join(separator, parts);
         }
-
     }
 }

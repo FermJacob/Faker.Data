@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Company.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
@@ -14,16 +14,15 @@ namespace Faker
     {
         // Logo
         private static List<string> name;
-        private static object catchPhraseLock = new object();
-        private static object catchPhrasePreLock = new object();
+        private static readonly object catchPhrasePreLock = new();
         private static List<string> catchPhrasePre;
         private static List<string> suffix;
         private static List<string> sector;
         private static List<string> industry;
         private static List<string> catchPhraseMid;
-        private static object catchPhraseMidLock = new object();
+        private static readonly object catchPhraseMidLock = new();
         private static List<string> catchPhrasePos;
-        private static object catchPhrasePosLock = new object();
+        private static readonly object catchPhrasePosLock = new();
 
         /// <summary>
         /// Gets a suffix value
@@ -31,10 +30,7 @@ namespace Faker
         /// <returns>String of suffix</returns>
         public static string Suffix()
         {
-            if (suffix == null)
-            {
-                suffix = XML.GetListString("Company", "Suffix");
-            }
+            suffix ??= XML.GetListString("Company", "Suffix");
 
             return suffix[Number.RandomNumber(0, suffix.Count - 1)];
         }
@@ -45,10 +41,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string Sector()
         {
-            if (sector == null)
-            {
-                sector = XML.GetListString("Company", "Sector");
-            }
+            sector ??= XML.GetListString("Company", "Sector");
 
             return sector[Number.RandomNumber(0, sector.Count - 1)];
         }
@@ -59,10 +52,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string Industry()
         {
-            if (industry == null)
-            {
-                industry = XML.GetListString("Company", "Industry");
-            }
+            industry ??= XML.GetListString("Company", "Industry");
 
             return industry[Number.RandomNumber(0, industry.Count - 1)];
         }
@@ -99,10 +89,7 @@ namespace Faker
         {
             lock (catchPhrasePreLock)
             {
-                if (catchPhrasePre == null)
-                {
-                    catchPhrasePre = XML.GetListString("Company", "CatchPre");
-                }
+                catchPhrasePre ??= XML.GetListString("Company", "CatchPre");
 
                 return catchPhrasePre[Number.RandomNumber(0, catchPhrasePre.Count - 1)];
             }
@@ -116,10 +103,7 @@ namespace Faker
         {
             lock (catchPhraseMidLock)
             {
-                if (catchPhraseMid == null)
-                {
-                    catchPhraseMid = XML.GetListString("Company", "CatchPre");
-                }
+                catchPhraseMid ??= XML.GetListString("Company", "CatchPre");
 
                 return catchPhraseMid[Number.RandomNumber(0, catchPhraseMid.Count - 1)];
             }
@@ -133,10 +117,7 @@ namespace Faker
         {
             lock (catchPhrasePosLock)
             {
-                if (catchPhrasePos == null)
-                {
-                    catchPhrasePos = XML.GetListString("Company", "CatchPre");
-                }
+                catchPhrasePos ??= XML.GetListString("Company", "CatchPre");
 
                 return catchPhrasePos[Number.RandomNumber(0, catchPhrasePos.Count - 1)];
             }
@@ -144,10 +125,7 @@ namespace Faker
 
         private static string Name()
         {
-            if (name == null)
-            {
-                name = XML.GetListString("Company", "Name");
-            }
+            name ??= XML.GetListString("Company", "Name");
 
             return name[Number.RandomNumber(0, name.Count - 1)];
         }

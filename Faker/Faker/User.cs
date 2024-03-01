@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="User.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -19,14 +19,12 @@ namespace Faker
         /// <returns>An email address as a string</returns>
         public static string Email()
         {
-            switch (Number.RandomNumber(2))
+            return Number.RandomNumber(2) switch
             {
-                case 0:
-                    return string.Format("{0}@{1}", Username(), Internet.Host());
-                case 1:
-                    return string.Format("{0}{1}@{2}", Username(), Number.RandomNumber(1, 10), Internet.Host());
-                default: throw new ApplicationException();
-            }
+                0 => string.Format("{0}@{1}", Username(), Internet.Host()),
+                1 => string.Format("{0}{1}@{2}", Username(), Number.RandomNumber(1, 10), Internet.Host()),
+                _ => throw new ApplicationException(),
+            };
         }
 
         /// <summary>
@@ -35,21 +33,15 @@ namespace Faker
         /// <returns>A username as a string</returns>
         public static string Username()
         {
-            switch (Number.RandomNumber(5))
+            return Number.RandomNumber(5) switch
             {
-                case 0:
-                    return new Regex(@"\W").Replace(Name.FirstName(), string.Empty).ToLower();
-                case 1:
-
-                    return new Regex(@"\W").Replace(Name.FirstName() + Name.LastName(), string.Empty).ToLower();
-                case 2:
-                    return new Regex(@"\W").Replace(Name.LastName() + Name.FirstName(), string.Empty).ToLower();
-                case 3:
-                    return string.Format("{0}.{1}", Name.LastName(), Name.FirstName());
-                case 4:
-                    return string.Format("{0}.{1}", Name.FirstName(), Name.LastName());
-                default: throw new ApplicationException();
-            }
+                0 => new Regex(@"\W").Replace(Name.FirstName(), string.Empty).ToLower(),
+                1 => new Regex(@"\W").Replace(Name.FirstName() + Name.LastName(), string.Empty).ToLower(),
+                2 => new Regex(@"\W").Replace(Name.LastName() + Name.FirstName(), string.Empty).ToLower(),
+                3 => string.Format("{0}.{1}", Name.LastName(), Name.FirstName()),
+                4 => string.Format("{0}.{1}", Name.FirstName(), Name.LastName()),
+                _ => throw new ApplicationException(),
+            };
         }
 
         /// <summary>
@@ -60,7 +52,7 @@ namespace Faker
         /// <returns>String of password</returns>
         public static string Password(int length, int numberOfSpecialChars)
         {
-                return GeneratePassword(length, numberOfSpecialChars);   
+            return GeneratePassword(length, numberOfSpecialChars);
         }
 
         /// <summary>
@@ -117,15 +109,14 @@ namespace Faker
 
             char[] pass = new char[length];
             int[] pos = new int[length];
-            int i = 0, j = 0, temp = 0;
-            bool flag = false;
+            int i = 0;
 
             // Random the position values of the pos array for the string Pass
             while (i < length - 1)
             {
-                j = 0;
-                flag = false;
-                temp = Number.RandomNumber(0, length);
+                bool flag = false;
+                int temp = Number.RandomNumber(0, length);
+                int j;
                 for (j = 0; j < length; j++)
                 {
                     if (temp == pos[j])
@@ -161,7 +152,7 @@ namespace Faker
                 sorted[i] = pass[pos[i]];
             }
 
-            string password = new string(sorted);
+            string password = new(sorted);
 
             return password;
         }

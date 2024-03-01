@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Commerce.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Faker.Extensions;
@@ -18,13 +18,13 @@ namespace Faker
     public static class Commerce
     {
         private static List<string> departments;
-        private static object departmentLock = new object();
+        private static readonly object departmentLock = new();
         private static List<string> products;
-        private static object productsLock = new object();
+        private static readonly object productsLock = new();
         private static List<string> productAdjectives;
-        private static object productAdjectivesLock = new object();
+        private static readonly object productAdjectivesLock = new();
         private static List<string> productMaterials;
-        private static object productMaterialsLock = new object();
+        private static readonly object productMaterialsLock = new();
 
         /// <summary>
         /// Gets a random department
@@ -34,10 +34,7 @@ namespace Faker
         {
             lock (departmentLock)
             {
-                if (departments == null)
-                {
-                    departments = XML.GetListString("Commerce", "Department");
-                }
+                departments ??= XML.GetListString("Commerce", "Department");
 
                 return departments[Number.RandomNumber(0, departments.Count - 1)];
             }
@@ -49,7 +46,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> Departments()
         {
-            return Number.RandomNumber(1, 10).Times(x => Department()).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => Department()).ToList();
         }
 
         /// <summary>
@@ -59,7 +56,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> Departments(int numberOfDepartments)
         {
-            return numberOfDepartments.Times(x => Department()).ToList();
+            return numberOfDepartments.Times(_ => Department()).ToList();
         }
 
         /// <summary>
@@ -70,10 +67,7 @@ namespace Faker
         {
             lock (productsLock)
             {
-                if (products == null)
-                {
-                    products = XML.GetListString("Commerce", "Product");
-                }
+                products ??= XML.GetListString("Commerce", "Product");
 
                 return products[Number.RandomNumber(0, products.Count - 1)];
             }
@@ -85,7 +79,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> Products()
         {
-            return Number.RandomNumber(1, 10).Times(x => Product()).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => Product()).ToList();
         }
 
         /// <summary>
@@ -95,7 +89,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> Products(int numberOfProducts)
         {
-            return numberOfProducts.Times(x => Product()).ToList();
+            return numberOfProducts.Times(_ => Product()).ToList();
         }
 
         /// <summary>
@@ -106,10 +100,7 @@ namespace Faker
         {
             lock (productAdjectivesLock)
             {
-                if (productAdjectives == null)
-                {
-                    productAdjectives = XML.GetListString("Commerce", "Adjective");
-                }
+                productAdjectives ??= XML.GetListString("Commerce", "Adjective");
 
                 return productAdjectives[Number.RandomNumber(0, productAdjectives.Count - 1)];
             }
@@ -121,7 +112,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> ProductAdjectives()
         {
-            return Number.RandomNumber(1, 10).Times(x => ProductAdjective()).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => ProductAdjective()).ToList();
         }
 
         /// <summary>
@@ -131,7 +122,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> ProductAdjectives(int numberOfAdjectives)
         {
-            return numberOfAdjectives.Times(x => ProductAdjective()).ToList();
+            return numberOfAdjectives.Times(_ => ProductAdjective()).ToList();
         }
 
         /// <summary>
@@ -142,10 +133,7 @@ namespace Faker
         {
             lock (productMaterialsLock)
             {
-                if (productMaterials == null)
-                {
-                    productMaterials = XML.GetListString("Commerce", "Material");
-                }
+                productMaterials ??= XML.GetListString("Commerce", "Material");
 
                 return productMaterials[Number.RandomNumber(0, productMaterials.Count - 1)];
             }
@@ -157,7 +145,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> ProductMaterials()
         {
-            return Number.RandomNumber(1, 10).Times(x => ProductMaterial()).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => ProductMaterial()).ToList();
         }
 
         /// <summary>
@@ -167,7 +155,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> ProductMaterials(int numberOfMaterials)
         {
-            return numberOfMaterials.Times(x => ProductMaterial()).ToList();
+            return numberOfMaterials.Times(_ => ProductMaterial()).ToList();
         }
 
         /// <summary>
@@ -185,7 +173,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> ProductNames()
         {
-            return Number.RandomNumber(1, 10).Times(x => string.Join(" ", ProductAdjective(), ProductMaterial(), Product())).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => string.Join(" ", ProductAdjective(), ProductMaterial(), Product())).ToList();
         }
 
         /// <summary>
@@ -195,7 +183,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> ProductNames(int numberOfProductNames)
         {
-            return numberOfProductNames.Times(x => string.Join(" ", ProductAdjective(), ProductMaterial(), Product())).ToList();
+            return numberOfProductNames.Times(_ => string.Join(" ", ProductAdjective(), ProductMaterial(), Product())).ToList();
         }
 
         /// <summary>
@@ -231,7 +219,7 @@ namespace Faker
         public static List<string> Prices(string symbol = "")
         {
             // Potentially get a random symbol
-            return Number.RandomNumber(1, 10).Times(x => Price(symbol)).ToList();
+            return Number.RandomNumber(1, 10).Times(_ => Price(symbol)).ToList();
         }
 
         /// <summary>
@@ -242,7 +230,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/> of strings</returns>
         public static List<string> Prices(string symbol, int numberOfPrices = 1)
         {
-            return numberOfPrices.Times(x => Price(symbol)).ToList();
+            return numberOfPrices.Times(_ => Price(symbol)).ToList();
         }
     }
 }

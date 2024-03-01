@@ -1,16 +1,17 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ImageTests.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing.Imaging;
+using System.Runtime.Versioning;
 
 namespace Faker.Tests
 {
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "*", Justification = "Reviewed")]
     [TestClass]
+    [SupportedOSPlatform("windows")]
     public class ImageTests
     {
         [TestMethod]

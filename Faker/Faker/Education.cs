@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Education.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
@@ -22,7 +22,7 @@ namespace Faker
         // School College
         // School HS
         // US School Generic
-        private static object majorLock = new object();
+        private static readonly object majorLock = new();
         private static List<string> major;
 
         /// <summary>
@@ -33,10 +33,7 @@ namespace Faker
         {
             lock (majorLock)
             {
-                if (major == null)
-                {
-                    major = XML.GetListString("Education", "Majors");
-                }
+                major ??= XML.GetListString("Education", "Majors");
 
                 return major[Number.RandomNumber(0, major.Count - 1)];
             }

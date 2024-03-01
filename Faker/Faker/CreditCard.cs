@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="CreditCard.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
@@ -22,10 +22,7 @@ namespace Faker
         /// <returns>string of random credit card</returns>
         public static string CreditCardType()
         {
-            if (creditCardType == null)
-            {
-                creditCardType = XML.GetListString("CreditCardType");
-            }
+            creditCardType ??= XML.GetListString("CreditCardType");
 
             return creditCardType[Number.RandomNumber(0, creditCardType.Count - 1)];
         }

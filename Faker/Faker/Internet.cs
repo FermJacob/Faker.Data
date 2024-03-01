@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Internet.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
@@ -16,13 +16,13 @@ namespace Faker
     {
         // Domain name
         // Url
-        private static object topDomainSuffixLock = new object();
+        private static readonly object topDomainSuffixLock = new();
         private static List<string> topDomainSuffix;
-        private static object hostsLock = new object();
+        private static readonly object hostsLock = new();
         private static List<string> hosts;
-        private static object topCountryDomainSuffixLock = new object();
+        private static readonly object topCountryDomainSuffixLock = new();
         private static List<string> topCountryDomainSuffix;
-        private static object domainSuffixLock = new object();
+        private static readonly object domainSuffixLock = new();
         private static List<string> domainSuffix;
 
         /// <summary>
@@ -33,10 +33,7 @@ namespace Faker
         {
             lock (hostsLock)
             {
-                if (hosts == null)
-                {
-                    hosts = XML.GetListString("Internet", "Host");
-                }
+                hosts ??= XML.GetListString("Internet", "Host");
 
                 return hosts[Number.RandomNumber(0, hosts.Count - 1)];
             }
@@ -59,10 +56,7 @@ namespace Faker
         {
             lock (topDomainSuffixLock)
             {
-                if (topDomainSuffix == null)
-                {
-                    topDomainSuffix = XML.GetListString("Internet", "TopDomainSuffix");
-                }
+                topDomainSuffix ??= XML.GetListString("Internet", "TopDomainSuffix");
 
                 return topDomainSuffix[Number.RandomNumber(0, topDomainSuffix.Count - 1)];
             }
@@ -76,10 +70,7 @@ namespace Faker
         {
             lock (topCountryDomainSuffixLock)
             {
-                if (topCountryDomainSuffix == null)
-                {
-                    topCountryDomainSuffix = XML.GetListString("Internet", "CountryDomainSuffix");
-                }
+                topCountryDomainSuffix ??= XML.GetListString("Internet", "CountryDomainSuffix");
 
                 return topCountryDomainSuffix[Number.RandomNumber(0, topCountryDomainSuffix.Count - 1)];
             }
@@ -93,10 +84,7 @@ namespace Faker
         {
             lock (domainSuffixLock)
             {
-                if (domainSuffix == null)
-                {
-                    domainSuffix = XML.GetListString("Internet", "DomainSuffix");
-                }
+                domainSuffix ??= XML.GetListString("Internet", "DomainSuffix");
 
                 return domainSuffix[Number.RandomNumber(0, domainSuffix.Count - 1)];
             }
@@ -139,7 +127,7 @@ namespace Faker
                 Number.RandomNumber(0, 255).ToString("x2"),
                 Number.RandomNumber(0, 255).ToString("x2")
             };
-            
+
             return string.Join(":", arr);
         }
 
@@ -160,7 +148,7 @@ namespace Faker
         {
             string[] protocols = new string[] { "http", "https", "ftp", "ssh" };
 
-            return protocols[Number.RandomNumber(protocols.Count())];
+            return protocols[Number.RandomNumber(protocols.Length)];
         }
 
         /// <summary>
@@ -171,7 +159,7 @@ namespace Faker
         {
             string[] protocols = new string[] { "http", "https" };
 
-            return protocols[Number.RandomNumber(protocols.Count())];
+            return protocols[Number.RandomNumber(protocols.Length)];
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="XML.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace Faker
         /// <summary>
         /// XDocument lock
         /// </summary>
-        private static object docLock = new object();
+        private static readonly object docLock = new();
 
         /// <summary>
         /// XDocument variable

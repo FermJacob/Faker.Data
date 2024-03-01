@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Sports.cs">
-//     Copyright (c) 2019 Jacob Ferm, All rights Reserved
+//     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 using Faker.Extensions;
@@ -14,7 +14,7 @@ namespace Faker
     /// </summary>
     public static class Sports
     {
-        private static object sportTypeLock = new object();
+        private static readonly object sportTypeLock = new();
         private static List<string> sportType;
 
         /// <summary>
@@ -25,10 +25,7 @@ namespace Faker
         {
             lock (sportTypeLock)
             {
-                if (sportType == null)
-                {
-                    sportType = XML.GetListString("Sports", "Names");
-                }
+                sportType ??= XML.GetListString("Sports", "Names");
 
                 return sportType[Number.RandomNumber(0, sportType.Count - 1)];
             }
@@ -41,7 +38,7 @@ namespace Faker
         public static List<string> SportTypes()
         {
             int number = Number.RandomNumber(1, 10);
-            return number.Times(x => SportType()).ToList();
+            return number.Times(_ => SportType()).ToList();
         }
 
         /// <summary>
@@ -51,7 +48,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/></returns>
         public static List<string> SportTypes(int number)
         {
-            return number.Times(x => SportType()).ToList();
+            return number.Times(_ => SportType()).ToList();
         }
     }
 }
