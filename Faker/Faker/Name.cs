@@ -13,109 +13,30 @@ namespace Faker
     /// </summary>
     public static class Name
     {
-        private static readonly object firstNameLock = new();
-        private static readonly object femaleFirstNameLock = new();
-        private static readonly object lastNameLock = new();
-        private static readonly object ethnicityLock = new();
-        private static List<string> maleFirstName;
-        private static List<string> femaleFirstName;
-        private static List<string> firstName;
-        private static List<string> lastName;
-        private static List<string> ethnicity;
-
-        /// <summary>
-        /// Gets a random male first name
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string MaleFirstName()
+        private static readonly Lazy<List<string>> maleFirstName = new(() => XML.GetListString("MaleFirstName"));
+        private static readonly Lazy<List<string>> femaleFirstName = new(() => XML.GetListString("FemaleFirstName"));
+        private static readonly Lazy<List<string>> lastName = new(() => XML.GetListString("LastName"));
+        private static readonly Lazy<List<string>> ethnicity = new(() => XML.GetListString("Person", "Ethnicity"));
+        private static readonly Lazy<List<string>> firstName = new(() =>
         {
-            maleFirstName ??= XML.GetListString("MaleFirstName");
+            var names = new List<string>();
+            names.AddRange(femaleFirstName.Value);
+            names.AddRange(maleFirstName.Value);
+            return names;
+        });
 
-            return maleFirstName[Number.RandomNumber(0, maleFirstName.Count - 1)];
-        }
+        public static string MaleFirstName() => maleFirstName.Value[Number.RandomNumber(0, maleFirstName.Value.Count - 1)];
 
-        /// <summary>
-        /// Gets a random female first name
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string FemaleFirstName()
-        {
-            lock (femaleFirstNameLock)
-            {
-                femaleFirstName ??= XML.GetListString("FemaleFirstName");
+        public static string FemaleFirstName() => femaleFirstName.Value[Number.RandomNumber(0, femaleFirstName.Value.Count - 1)];
 
-                return femaleFirstName[Number.RandomNumber(0, femaleFirstName.Count - 1)];
-            }
-        }
+        public static string LastName() => lastName.Value[Number.RandomNumber(0, lastName.Value.Count - 1)];
 
-        /// <summary>
-        /// Gets a random last name
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string LastName()
-        {
-            lock (lastNameLock)
-            {
-                lastName ??= XML.GetListString("LastName");
+        public static string FullName() => $"{FirstName()} {LastName()}";
 
-                return lastName[Number.RandomNumber(0, lastName.Count - 1)];
-            }
-        }
+        public static string FirstName() => firstName.Value[Number.RandomNumber(0, firstName.Value.Count - 1)];
 
-        /// <summary>
-        /// Gets a random full name
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string FullName()
-        {
-            return FirstName() + LastName();
-        }
+        public static string Gender() => Number.Bool() ? "Male" : "Female";
 
-        /// <summary>
-        /// Gets a random first name
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string FirstName()
-        {
-            lock (firstNameLock)
-            {
-                if (firstName == null)
-                {
-                    firstName = new List<string>();
-                    firstName.AddRange(XML.GetListString("FemaleFirstName"));
-                    firstName.AddRange(XML.GetListString("MaleFirstName"));
-                }
-
-                return firstName[Number.RandomNumber(0, firstName.Count - 1)];
-            }
-        }
-
-        /// <summary>
-        /// Gets a random gender
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string Gender()
-        {
-            if (Number.Bool())
-            {
-                return "Male";
-            }
-
-            return "Female";
-        }
-
-        /// <summary>
-        /// Gets a random ethnicity
-        /// </summary>
-        /// <returns>A string value</returns>
-        public static string Ethnicity()
-        {
-            lock (ethnicityLock)
-            {
-                ethnicity ??= XML.GetListString("Person", "Ethnicity");
-
-                return ethnicity[Number.RandomNumber(0, ethnicity.Count - 1)];
-            }
-        }
+        public static string Ethnicity() => ethnicity.Value[Number.RandomNumber(0, ethnicity.Value.Count - 1)];
     }
 }

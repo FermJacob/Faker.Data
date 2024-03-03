@@ -3,6 +3,7 @@
 //     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,36 +18,9 @@ namespace Faker
     public static class XML
     {
         /// <summary>
-        /// XDocument lock
-        /// </summary>
-        private static readonly object docLock = new();
-
-        /// <summary>
         /// XDocument variable
         /// </summary>
-        private static XDocument doc;
-
-        /// <summary>
-        /// Gets the XDocument to use
-        /// </summary>
-        private static XDocument Doc
-        {
-            get
-            {
-                lock (docLock)
-                {
-                    if (doc == null)
-                    {
-                        doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Faker.Data.xml")));
-                        return doc;
-                    }
-                    else
-                    {
-                        return doc;
-                    }
-                }
-            }
-        }
+        private static readonly Lazy<XDocument> doc = new(() => XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Faker.Data.xml"))));
 
         /// <summary>
         /// Gets the list of the data
@@ -55,7 +29,7 @@ namespace Faker
         /// <returns>A list of strings</returns>
         public static List<string> GetListString(XName node)
         {
-            return Doc.Descendants(node).Elements("Value").Select(item => (string)item).ToList();
+            return doc.Value.Descendants(node).Elements("Value").Select(item => (string)item).ToList();
         }
 
         /// <summary>
@@ -66,7 +40,7 @@ namespace Faker
         /// <returns>A list of strings</returns>
         public static List<string> GetListString(XName topNode, XName node)
         {
-            return Doc.Descendants(topNode).Descendants(node).Elements("Value").Select(item => (string)item).ToList();
+            return doc.Value.Descendants(topNode).Descendants(node).Elements("Value").Select(item => (string)item).ToList();
         }
 
         /// <summary>
@@ -77,7 +51,7 @@ namespace Faker
         /// <returns>A <see cref="List{T}"/></returns>
         public static List<XElement> GetListObject(XName topNode, XName node)
         {
-            return Doc.Descendants(topNode).Descendants(node).Elements("Value").ToList();
+            return doc.Value.Descendants(topNode).Descendants(node).Elements("Value").ToList();
         }
     }
 }

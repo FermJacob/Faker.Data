@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Faker
 {
@@ -16,6 +17,18 @@ namespace Faker
     /// </summary>
     public static class Currency
     {
+        //public static List<Currency> GetCurrencies(XName topNode)
+        //{
+
+        //    //return Doc.Descendants(topNode)
+        //    //    .Select(c => new Currency
+        //    //    {
+        //    //        Name = (string)c.Attribute("Name"),
+        //    //        Code = (string)c.Attribute("Code"),
+        //    //        Symbol = (string)c.Attribute("Symbol")
+        //    //    })
+        //    //    .ToList();
+        //}
         // Amount
         // Symbol
         // Amount and Symbol

@@ -13,6 +13,8 @@ namespace Faker
     /// </summary>
     public static class User
     {
+        private static readonly Regex nonWordCharacterRegex = new Regex(@"\W", RegexOptions.Compiled);
+
         /// <summary>
         /// Gets an email address
         /// </summary>
@@ -21,8 +23,8 @@ namespace Faker
         {
             return Number.RandomNumber(2) switch
             {
-                0 => string.Format("{0}@{1}", Username(), Internet.Host()),
-                1 => string.Format("{0}{1}@{2}", Username(), Number.RandomNumber(1, 10), Internet.Host()),
+                0 => $"{Username()}@{Internet.Host()}",
+                1 => $"{Username()}{Number.RandomNumber(1, 10)}@{Internet.Host()}",
                 _ => throw new ApplicationException(),
             };
         }
@@ -35,11 +37,11 @@ namespace Faker
         {
             return Number.RandomNumber(5) switch
             {
-                0 => new Regex(@"\W").Replace(Name.FirstName(), string.Empty).ToLower(),
-                1 => new Regex(@"\W").Replace(Name.FirstName() + Name.LastName(), string.Empty).ToLower(),
-                2 => new Regex(@"\W").Replace(Name.LastName() + Name.FirstName(), string.Empty).ToLower(),
-                3 => string.Format("{0}.{1}", Name.LastName(), Name.FirstName()),
-                4 => string.Format("{0}.{1}", Name.FirstName(), Name.LastName()),
+                0 => nonWordCharacterRegex.Replace(Name.FirstName(), string.Empty).ToLower(),
+                1 => nonWordCharacterRegex.Replace($"{Name.FirstName()}{Name.LastName()}", string.Empty).ToLower(),
+                2 => nonWordCharacterRegex.Replace($"{Name.LastName()}{Name.FirstName()}", string.Empty).ToLower(),
+                3 => $"{Name.LastName()}.{Name.FirstName()}",
+                4 => $"{Name.FirstName()}.{Name.LastName()}",
                 _ => throw new ApplicationException(),
             };
         }
@@ -63,12 +65,7 @@ namespace Faker
         /// <returns>Password as string</returns>
         public static string Password(int length, bool useSpecialChars)
         {
-            if (useSpecialChars)
-            {
-                return Password(length, Number.RandomNumber(1, 5));
-            }
-
-            return Password(length, 0);
+            return Password(length, useSpecialChars ? Number.RandomNumber(1, 5) : 0);
         }
 
         /// <summary>
@@ -108,53 +105,28 @@ namespace Faker
             }
 
             char[] pass = new char[length];
-            int[] pos = new int[length];
-            int i = 0;
+            Random rand = new Random();
 
-            // Random the position values of the pos array for the string Pass
-            while (i < length - 1)
+            for (int i = 0; i < length - nonAlphaNumericChars; i++)
             {
-                bool flag = false;
-                int temp = Number.RandomNumber(0, length);
-                int j;
-                for (j = 0; j < length; j++)
-                {
-                    if (temp == pos[j])
-                    {
-                        flag = true;
-                        j = length;
-                    }
-                }
-
-                if (!flag)
-                {
-                    pos[i] = temp;
-                    i++;
-                }
+                pass[i] = allowedChars[rand.Next(allowedChars.Length)];
             }
 
-            // Random the AlphaNumericChars
-            for (i = 0; i < length - nonAlphaNumericChars; i++)
+            for (int i = length - nonAlphaNumericChars; i < length; i++)
             {
-                pass[i] = allowedChars[Number.RandomNumber(0, allowedChars.Length)];
+                pass[i] = allowedNonAlphaNum[rand.Next(allowedNonAlphaNum.Length)];
             }
 
-            // Random the NonAlphaNumericChars
-            for (i = length - nonAlphaNumericChars; i < length; i++)
+            // Shuffle the array
+            for (int i = 0; i < pass.Length; i++)
             {
-                pass[i] = allowedNonAlphaNum[Number.RandomNumber(0, allowedNonAlphaNum.Length)];
+                int j = rand.Next(i, pass.Length);
+                char temp = pass[i];
+                pass[i] = pass[j];
+                pass[j] = temp;
             }
 
-            // Set the sorted array values by the pos array for the rigth posistion
-            char[] sorted = new char[length];
-            for (i = 0; i < length; i++)
-            {
-                sorted[i] = pass[pos[i]];
-            }
-
-            string password = new(sorted);
-
-            return password;
+            return new string(pass);
         }
     }
 }

@@ -3,10 +3,9 @@
 //     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
-using System.Configuration;
-using System.Text.RegularExpressions;
 using Faker.Extensions;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Faker
 {
@@ -15,6 +14,10 @@ namespace Faker
     /// </summary>
     public static class Utilities
     {
+        private static readonly string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+        private static readonly Regex numerifyRegex = new Regex("#", RegexOptions.Compiled);
+        private static readonly Regex slugifyRegex = new Regex(@"[^a-zA-Z0-9\.\-_]+", RegexOptions.Compiled);
+
         /// <summary>
         /// Gets a random alpha character
         /// </summary>
@@ -32,7 +35,6 @@ namespace Faker
         /// <returns>A random char</returns>
         public static char AlphaNumeric()
         {
-            string allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
             return allowedChars[Number.RandomNumber(allowedChars.Length)];
         }
 
@@ -43,7 +45,7 @@ namespace Faker
         /// <returns>String numbered</returns>
         public static string Numerify(this string s)
         {
-            return Regex.Replace(s, "#", new MatchEvaluator((_) => Number.RandomNumber(0, 9).ToString()), RegexOptions.Compiled);
+            return numerifyRegex.Replace(s, m => Number.RandomNumber(0, 9).ToString());
         }
 
         /// <summary>
@@ -54,7 +56,7 @@ namespace Faker
         public static string Slugify(string text)
         {
             var str = text.Replace(" ", "-").RemoveDiacritics();
-            return Regex.Replace(str, @"[^a-zA-Z0-9\.\-_]+", "");
+            return slugifyRegex.Replace(str, "");
         }
 
         /// <summary>

@@ -4,6 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections.Generic;
+using System.Text;
 
 namespace Faker
 {
@@ -57,19 +58,17 @@ namespace Faker
             return industry[Number.RandomNumber(0, industry.Count - 1)];
         }
 
-        /// <summary>
-        /// Gets a random symbol
-        /// </summary>
-        /// <returns>A string value</returns>
+        // ...
+
         public static string Symbol()
         {
-            string val = string.Empty;
+            StringBuilder val = new StringBuilder();
             for (int i = 0; i < Number.RandomNumber(3, 5); i++)
             {
-                val += Utilities.Character();
+                val.Append(Utilities.Character());
             }
 
-            return val.ToUpper();
+            return val.ToString().ToUpper();
         }
 
         /// <summary>

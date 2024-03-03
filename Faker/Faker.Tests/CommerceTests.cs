@@ -6,6 +6,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Faker.Tests
 {
@@ -22,13 +23,13 @@ namespace Faker.Tests
         [TestMethod]
         public void Departments()
         {
-            Assert.IsTrue(Commerce.Departments().Count >= 1);
+            Assert.IsTrue(Commerce.Departments().Any());
         }
 
         [TestMethod]
         public void Departments1()
         {
-            Assert.IsTrue(Commerce.Departments(5).Count == 5);
+            Assert.IsTrue(Commerce.Departments(5).Count() == 5);
         }
 
         [TestMethod]

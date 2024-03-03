@@ -59,6 +59,25 @@ namespace Faker
             return numberOfDepartments.Times(_ => Department()).ToList();
         }
 
+        ///// <summary>
+        ///// Gets a list of random departments
+        ///// </summary>
+        ///// <returns>A <see cref="List{T}"/> of strings</returns>
+        //public static IEnumerable<string> Departments()
+        //{
+        //    return Number.RandomNumber(1, 10).Times(_ => Department());
+        //}
+
+        ///// <summary>
+        ///// Gets a list of random departments
+        ///// </summary>
+        ///// <param name="numberOfDepartments">Number of departments</param>
+        ///// <returns>A <see cref="List{T}"/> of strings</returns>
+        //public static IEnumerable<string> Departments(int numberOfDepartments)
+        //{
+        //    return numberOfDepartments.Times(_ => Department());
+        //}
+
         /// <summary>
         /// Gets a random product
         /// </summary>
