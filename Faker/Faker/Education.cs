@@ -5,9 +5,6 @@
 //-----------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Faker
 {
@@ -22,8 +19,7 @@ namespace Faker
         // School College
         // School HS
         // US School Generic
-        private static readonly object majorLock = new();
-        private static List<string> major;
+        private static readonly Lazy<List<string>> major = new(() => XML.GetListString("Education", "Majors"));
 
         /// <summary>
         /// Gets a random major
@@ -31,12 +27,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string Major()
         {
-            lock (majorLock)
-            {
-                major ??= XML.GetListString("Education", "Majors");
-
-                return major[Number.RandomNumber(0, major.Count - 1)];
-            }
+            return major.Value[Number.RandomNumber(0, major.Value.Count - 1)];
         }
     }
 }

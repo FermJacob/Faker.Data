@@ -3,6 +3,7 @@
 //     Copyright (c) 2024 Jacob Ferm, All rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace Faker
     /// </summary>
     public static class Colors
     {
-        private static List<System.Drawing.Color> systemColors;
-        private static List<string> colors;
+        private static readonly Lazy<List<Color>> systemColors = new(LoadSystemColors);
+        private static readonly Lazy<List<string>> colors = new(() => XML.GetListString("Color"));
 
         /// <summary>
         /// Get a set of RGB colors
@@ -52,9 +53,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string SystemColor()
         {
-            systemColors ??= LoadSystemColors();
-
-            return systemColors[Number.RandomNumber(0, systemColors.Count - 1)].Name;
+            return systemColors.Value[Number.RandomNumber(0, systemColors.Value.Count - 1)].Name;
         }
 
         /// <summary>
@@ -63,9 +62,7 @@ namespace Faker
         /// <returns>A string value</returns>
         public static string ColorString()
         {
-            colors ??= XML.GetListString("Color");
-
-            return colors[Number.RandomNumber(0, colors.Count - 1)];
+            return colors.Value[Number.RandomNumber(0, colors.Value.Count - 1)];
         }
 
         private static List<Color> LoadSystemColors()
