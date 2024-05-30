@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="MSTest" Version="3.2.0" />
-    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.10.1" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.11.3" />
   </ItemGroup>
 
   <ItemGroup>
